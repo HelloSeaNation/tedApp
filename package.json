@@ -2,14 +2,12 @@
   "name": "tedapp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node build/index.js",
-    "dev": "nodemon src/index.ts",
-    "build": "tsc -p .",
-    "prettier": "prettier --write .",
-    "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix"
+    "build": "tsc",
+    "start": "node build/app.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon build/app.js\"",
+    "local": "rm -rf build && tsc && cd my-app && yarn build && cd .. && mv my-app/build build/frontend && node build/app.js"
   },
   "author": "",
   "license": "ISC",
