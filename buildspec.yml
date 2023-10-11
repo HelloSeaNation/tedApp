@@ -9,7 +9,12 @@ phases:
       - yarn install
   build:
     commands:
+      - yarn build      
+      - cd my-app
+      - yarn install
       - yarn build
+      - cd ..
+      - mv my-app/build build/frontend
 
 artifacts:
   files:
