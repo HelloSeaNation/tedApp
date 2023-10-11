@@ -16,6 +16,6 @@ artifacts:
     - yarn.lock
     - package.json
     - 'build/**/*'
-    - '.platform/**/*' # AWS Elastic Beanstalk configuration files
-    - '.ebextensions/**/*' # AWS Elastic Beanstalk configuration files
+    # - '.platform/**/*' # AWS Elastic Beanstalk configuration files
+    # - '.ebextensions/**/*' # AWS Elastic Beanstalk configuration files
   discard-paths: no
