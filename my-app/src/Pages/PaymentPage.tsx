@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { useShoppingCart } from "../components/cartFunction";
 import storeItems from "../itemdata.json";
 import SummaryItem from "../components/summaryItem";
-import CartItem from "../components/cartItem";
 
 interface OrderButtonProps {
   to: string;

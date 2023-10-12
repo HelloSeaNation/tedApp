@@ -19,7 +19,7 @@ function Content() {
             id="home"
             marginTop="10vh"
           >
-            <Image src="src/assets/restaurant1.jpeg" alt="restaurant" />
+            <Image src="restaurant1.jpeg" alt="restaurant" />
           </Center>
           {/* Section2 about me */}
           <Flex
@@ -62,7 +62,7 @@ function Content() {
               </Stack>
              
             </Flex>
-            <Image src="src/assets/bear2.svg" alt="restaurant" width="220px" />
+            <Image src="bear2.svg" alt="restaurant" width="220px" />
           </Flex>
           {/* Section 3 View Menu */}
           <Flex
@@ -86,7 +86,7 @@ function Content() {
               <Text fontFamily={"Coiny"} fontSize={"70px"} color={"#654534"}>
                 MENU
               </Text>
-              <Link href="src/assets/FoodMenu.pdf">
+              <Link href="FoodMenu.pdf">
                 <Button
                   variant={"outline"}
                   borderColor={"#A17C5F"}
@@ -112,7 +112,7 @@ function Content() {
                 </Button>{" "}
               </Link>
             </Flex>
-            <Image src="src/assets/bearCup.svg" alt="restaurant" width="350px" />
+            <Image src="bearCup.svg" alt="restaurant" width="350px" />
           </Flex>{" "}
           {/* Section 4 Contact */}
           <Flex
@@ -147,7 +147,7 @@ function Content() {
                 027 430 0322
               </Text>
             </Flex>
-            <Map width="100%" height="400"/>
+            <Map width="70%" height="500"/>
           </Flex>
         </Flex>
       </Box>
