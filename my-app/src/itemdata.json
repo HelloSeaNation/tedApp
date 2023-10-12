@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "name": "Ted's Chicken Toast",
+        "price": 16.99,
+        "imgUrl": "src/assets/tedtoast.png"
+    },
+
+    {
+        "id": 2,
+        "name": "Ted's Beef Burger",
+        "price": 24.99,
+        "imgUrl": "src/assets/tedBurger.png"
+    },
+
+    {
+        "id": 3,
+        "name": "Ted's Soup",
+        "price": 10.99,
+        "imgUrl": "src/assets/tedsoup.png"
+    },
+
+    {
+        "id": 4,
+        "name": "Ted's Bento Box",
+        "price": 16.99,
+        "imgUrl": "src/assets/bento.png"
+    },
+
+    {
+        "id": 5,
+        "name": "Ted's Big Breakfast",
+        "price": 26.99,
+        "imgUrl": "src/assets/BigBreakfast.png"
+    },
+
+    {
+        "id": 6,
+        "name": "Ted's Salad",
+        "price": 16.99,
+        "imgUrl": "src/assets/salad.png"
+    },
+
+    {
+        "id": 7,
+        "name": "Ted's Choco Cookie 6pk",
+        "price": 8.99,
+        "imgUrl": "src/assets/cookie.png"
+    },
+
+    {
+        "id": 8,
+        "name": "Ted's Donuts 3pk",
+        "price": 6.99,
+        "imgUrl": "src/assets/donut.png"
+    },
+
+    {
+        "id": 9,
+        "name": "Ted's Muffin 6pk",
+        "price": 7.99,
+        "imgUrl": "src/assets/muffin.jpg"
+    },
+
+    {
+        "id": 10,
+        "name": "Ted's Affogato",
+        "price": 8.99,
+        "imgUrl": "src/assets/affogato.png"
+    },
+
+    {
+        "id": 11,
+        "name": "Ted's Signature Coffee",
+        "price": 5.50,
+        "imgUrl": "src/assets/flatWhite.png"
+    },
+
+    {
+        "id": 12,
+        "name": "Ted's Iced Coffee",
+        "price": 6.00,
+        "imgUrl": "src/assets/cuppa.png"
+    },
+
+    {
+        "id": 13,
+        "name": "Ted's Iced Chocolate",
+        "price": 7.99,
+        "imgUrl": "src/assets/mocha3D.png"
+    }
+]
