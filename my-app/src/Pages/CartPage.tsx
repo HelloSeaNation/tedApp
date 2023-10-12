@@ -10,11 +10,6 @@ interface RoutedButtonProps {
 }
 
 function CartPage({}: RoutedButtonProps) {
-  const containerStyles = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  };
   const [isHovered, setIsHovered] = React.useState(false);
   const buttonStyles = {
     backgroundColor: isHovered ? "#654534" : "#A17C5F",
