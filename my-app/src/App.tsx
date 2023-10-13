@@ -1,6 +1,6 @@
 import "./App.css";
 import { Box } from "@chakra-ui/react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Content from "./components/Content";
 import OrderPage from "./Pages/OrderPage";
 import Menu from "./Pages/Menu";
@@ -15,10 +15,11 @@ function App() {
   return (
     <>
     <ShoppingCartProvider>
-        <Router>
+        <HashRouter basename="/">
           <Navbar />
           <Box backgroundColor="#F2F1E7" minHeight={"100vh"}>
             <Routes>
+
               <Route path="/" element={<Content />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/order" element={<OrderPage />} />
@@ -28,7 +29,7 @@ function App() {
             </Routes>
             <Footer />
           </Box>
-        </Router>
+        </HashRouter>
     </ShoppingCartProvider>
     </>
   );
