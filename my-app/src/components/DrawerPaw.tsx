@@ -33,7 +33,7 @@ function DrawerPaw() {
   return (
     <>
       <Image
-        src="paw.png"
+        src="assets/paw.png"
         alt="bear"
         width="40px"
         style={{ height: "35px" }}
@@ -51,7 +51,7 @@ function DrawerPaw() {
               justifyContent={"right"}
             >
               <Image
-                src="paw.png"
+                src="assets/paw.png"
                 alt="bear"
                 width="40px"
                 style={{ height: "35px" }}

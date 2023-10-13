@@ -3,90 +3,90 @@
         "id": 1,
         "name": "Ted's Chicken Toast",
         "price": 16.99,
-        "imgUrl": "tedtoast.png"
+        "imgUrl": "assets/tedtoast.png"
     },
 
     {
         "id": 2,
         "name": "Ted's Beef Burger",
         "price": 24.99,
-        "imgUrl": "tedBurger.png"
+        "imgUrl": "assets/tedBurger.png"
     },
 
     {
         "id": 3,
         "name": "Ted's Soup",
         "price": 10.99,
-        "imgUrl": "tedsoup.png"
+        "imgUrl": "assets/tedsoup.png"
     },
 
     {
         "id": 4,
         "name": "Ted's Bento Box",
         "price": 16.99,
-        "imgUrl": "bento.png"
+        "imgUrl": "assets/bento.png"
     },
 
     {
         "id": 5,
         "name": "Ted's Big Breakfast",
         "price": 26.99,
-        "imgUrl": "BigBreakfast.png"
+        "imgUrl": "assets/BigBreakfast.png"
     },
 
     {
         "id": 6,
         "name": "Ted's Salad",
         "price": 16.99,
-        "imgUrl": "salad.png"
+        "imgUrl": "assets/salad.png"
     },
 
     {
         "id": 7,
         "name": "Ted's Choco Cookie 6pk",
         "price": 8.99,
-        "imgUrl": "cookie.png"
+        "imgUrl": "assets/cookie.png"
     },
 
     {
         "id": 8,
         "name": "Ted's Donuts 3pk",
         "price": 6.99,
-        "imgUrl": "donut.png"
+        "imgUrl": "assets/donut.png"
     },
 
     {
         "id": 9,
         "name": "Ted's Muffin 6pk",
         "price": 7.99,
-        "imgUrl": "muffin.jpg"
+        "imgUrl": "assets/muffin.jpg"
     },
 
     {
         "id": 10,
         "name": "Ted's Affogato",
         "price": 8.99,
-        "imgUrl": "affogato.png"
+        "imgUrl": "assets/affogato.png"
     },
 
     {
         "id": 11,
         "name": "Ted's Signature Coffee",
         "price": 5.50,
-        "imgUrl": "flatWhite.png"
+        "imgUrl": "assets/flatWhite.png"
     },
 
     {
         "id": 12,
         "name": "Ted's Iced Coffee",
         "price": 6.00,
-        "imgUrl": "cuppa.png"
+        "imgUrl": "assets/cuppa.png"
     },
 
     {
         "id": 13,
         "name": "Ted's Iced Chocolate",
         "price": 7.99,
-        "imgUrl": "mocha3D.png"
+        "imgUrl": "assets/mocha3D.png"
     }
 ]

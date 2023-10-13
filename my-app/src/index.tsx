@@ -13,6 +13,3 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </ChakraProvider>
   </React.StrictMode>
 );
-ReactDOM.createRoot(document.getElementById("orderPage")!).render(
-  <OrderPage />
-);

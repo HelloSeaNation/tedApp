@@ -19,7 +19,7 @@ function Content() {
             id="home"
             marginTop="10vh"
           >
-            <Image src="restaurant1.jpeg" alt="restaurant" />
+            <Image src="assets/restaurant1.jpeg" alt="restaurant" />
           </Center>
           {/* Section2 about me */}
           <Flex
@@ -62,7 +62,7 @@ function Content() {
               </Stack>
              
             </Flex>
-            <Image src="bear2.svg" alt="restaurant" width="220px" />
+            <Image src="assets/bear2.svg" alt="restaurant" width="220px" />
           </Flex>
           {/* Section 3 View Menu */}
           <Flex
@@ -112,7 +112,7 @@ function Content() {
                 </Button>{" "}
               </Link>
             </Flex>
-            <Image src="bearCup.svg" alt="restaurant" width="350px" />
+            <Image src="assets/bearCup.svg" alt="restaurant" width="350px" />
           </Flex>{" "}
           {/* Section 4 Contact */}
           <Flex

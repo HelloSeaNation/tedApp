@@ -1,7 +1,6 @@
 import { Box, Text, Center, Flex } from "@chakra-ui/react";
 import items from "../itemdata.json";
 import Card from "../components/Card";
-import ReactDOM from "react-dom/client";
 
 const OrderPage = () => {
   const textStyles = {

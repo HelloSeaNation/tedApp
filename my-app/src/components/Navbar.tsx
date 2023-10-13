@@ -22,7 +22,7 @@ function Navbar() {
       <Flex>
         <Link href="/">
           <Image
-            src="bear.png"
+            src="assets/bear.png"
             alt="bear"
             width="60px"
             height="50px"
