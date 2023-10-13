@@ -1,6 +1,7 @@
 import { Box, Text, Center, Flex } from "@chakra-ui/react";
 import items from "../itemdata.json";
 import Card from "../components/Card";
+import ReactDOM from "react-dom/client";
 
 const OrderPage = () => {
   const textStyles = {
@@ -17,8 +18,7 @@ const OrderPage = () => {
     justifyItems: "center",
   }; //place cards in a grid, decreases grid on smaller page
   //gridTemplateColumns: 'repeat(4, 1fr)'
-
-  return (
+    return (
     <Box bg={"#F2F1E7"}>
       <Center>
         <Flex paddingTop={"15vh"} w={"100vh"} flexDirection={"column"}>

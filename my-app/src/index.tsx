@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
+import OrderPage from "./Pages/OrderPage";
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -11,4 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <App />
     </ChakraProvider>
   </React.StrictMode>
+);
+ReactDOM.createRoot(document.getElementById("orderPage")!).render(
+  <OrderPage />
 );
