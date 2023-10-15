@@ -19,6 +19,7 @@ type ShoppingCartContext = {
   closeCart: () => void;
   cartQuantity: number;
   cartItems: CartItem[];
+  clearCart: () => void;
 };
 
 const ShoppingCartContext = React.createContext({} as ShoppingCartContext);
@@ -82,6 +83,10 @@ export function ShoppingCartProvider({ children }: shoppingCartProviderProps) {
     });
   }
 
+  function clearCart() {
+    setCartItems([]);
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -93,6 +98,7 @@ export function ShoppingCartProvider({ children }: shoppingCartProviderProps) {
         cartQuantity,
         openCart,
         closeCart,
+        clearCart,
       }}
     >
       {children}

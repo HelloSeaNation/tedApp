@@ -80,6 +80,8 @@ function PaymentPage({ }: OrderButtonProps) {
     }, 0)
     .toFixed(2);
 
+    const { clearCart } = useShoppingCart();
+
   return (
     <Box>
       <Flex justifyContent={"center"}>
@@ -201,6 +203,7 @@ function PaymentPage({ }: OrderButtonProps) {
                 style={buttonStyles}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                onClick={() => { clearCart(); }}
               >
                 {" "}
                 ORDER NOW{" "}
