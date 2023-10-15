@@ -17,7 +17,7 @@ interface OrderButtonProps {
   to: string;
 }
 
-function PaymentPage({ }: OrderButtonProps) {
+function PaymentPage({}: OrderButtonProps) {
   const [isHovered, setIsHovered] = React.useState(false);
   const buttonStyles = {
     backgroundColor: isHovered ? "#654534" : "#A17C5F",
@@ -74,13 +74,13 @@ function PaymentPage({ }: OrderButtonProps) {
 
   const { cartItems } = useShoppingCart();
   const totalPrice = cartItems
-    .reduce((total: number, cartItem: { id: number, quantity: number }) => {
+    .reduce((total: number, cartItem: { id: number; quantity: number }) => {
       const item = storeItems.find((i) => i.id === cartItem.id);
       return total + (item?.price || 0) * cartItem.quantity;
     }, 0)
     .toFixed(2);
 
-    const { clearCart } = useShoppingCart();
+  const { clearCart } = useShoppingCart();
 
   return (
     <Box>
@@ -181,11 +181,9 @@ function PaymentPage({ }: OrderButtonProps) {
         <Box style={rightContainer}>
           <Text style={textStyles}>Order Summary</Text>
           <UnorderedList>
-
-
-          {cartItems.map((item: { id: number; quantity: number }) => (
-            <SummaryItem name={""} price={0} key={item.id} {...item} />
-          ))}
+            {cartItems.map((item: { id: number; quantity: number }) => (
+              <SummaryItem name={""} price={0} key={item.id} {...item} />
+            ))}
           </UnorderedList>
           <Input
             borderColor="#A17C5F"
@@ -203,7 +201,9 @@ function PaymentPage({ }: OrderButtonProps) {
                 style={buttonStyles}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                onClick={() => { clearCart(); }}
+                onClick={() => {
+                  clearCart();
+                }}
               >
                 {" "}
                 ORDER NOW{" "}

@@ -3,21 +3,21 @@
         "id": 1,
         "name": "Ted's Chicken Toast",
         "price": 16.99,
-        "imgUrl": "/assets/tedToast.png"
+        "imgUrl": "assets/TedToast.PNG"
     },
 
     {
         "id": 2,
         "name": "Ted's Beef Burger",
         "price": 24.99,
-        "imgUrl": "assets/tedBurger.png"
+        "imgUrl": "assets/tedBurger.PNG"
     },
 
     {
         "id": 3,
         "name": "Ted's Soup",
         "price": 10.99,
-        "imgUrl": "assets/tedSoup.png"
+        "imgUrl": "assets/tedasoup.PNG"
     },
 
     {
