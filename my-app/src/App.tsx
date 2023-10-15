@@ -19,7 +19,6 @@ function App() {
           <Navbar />
           <Box backgroundColor="#F2F1E7" minHeight={"100vh"}>
             <Routes>
-
               <Route path="/" element={<Content />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/order" element={<OrderPage />} />

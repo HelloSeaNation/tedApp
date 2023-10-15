@@ -48,7 +48,7 @@ function TopMenu() {
         >
           <CustomButton text="Contact" to="" />
         </ScrollLink>
-        <Link href="/order">
+        <Link href="#/order">
           <CustomButton text="Order" to="" />
         </Link>
 
