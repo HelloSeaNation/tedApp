@@ -23,8 +23,8 @@ function App() {
               <Route path="/menu" element={<Menu />} />
               <Route path="/order" element={<OrderPage />} />
               <Route path="/cart" element={<CartPage to="/payment"/>} />
-              <Route path="/cart/payment" element={<PaymentPage to="/thankyou"/>}></Route>
-              <Route path="/thankyou" element ={<ThankYou />}></Route> 
+              <Route path="/cart/payment" element={<PaymentPage to="/thank-you"/>}></Route>
+              <Route path="/thank-you" element ={<ThankYou />}></Route> 
             </Routes>
             <Footer />
           </Box>

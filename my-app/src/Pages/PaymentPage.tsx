@@ -196,7 +196,7 @@ function PaymentPage({ }: OrderButtonProps) {
           ></Input>
           <Text style={textStyles}>Order Total ${totalPrice}</Text>
           <Box display="flex" justifyContent="center">
-            <Link to="/ThankYou">
+            <Link to="/thank-you">
               <Button
                 style={buttonStyles}
                 onMouseEnter={() => setIsHovered(true)}
