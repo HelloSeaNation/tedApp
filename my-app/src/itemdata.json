@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Ted's Chicken Toast",
         "price": 16.99,
-        "imgUrl": "assets/tedtoast.png"
+        "imgUrl": "assets/TedToast.png"
     },
 
     {
@@ -38,7 +38,7 @@
         "id": 6,
         "name": "Ted's Salad",
         "price": 16.99,
-        "imgUrl": "assets/salad.png"
+        "imgUrl": "assets/Salad.png"
     },
 
     {

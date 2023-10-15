@@ -40,7 +40,7 @@ function CartPage({}: RoutedButtonProps) {
     if (cartItems.length === 0) {
       alert("Your cart is empty!");
     } else {
-      window.location.href = `/cart/payment`;
+      window.location.href = `/#/cart/payment`;
     }
   };
 

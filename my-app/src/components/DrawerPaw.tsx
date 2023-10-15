@@ -61,7 +61,7 @@ function DrawerPaw() {
             </DrawerHeader>
 
             <DrawerBody>
-              <Link href="/#home" onClick={onClose}>
+              <Link href="/" onClick={onClose}>
                 <Text
                   _hover={{ color: "#654534", cursor: "pointer"}}
                   {...TextStyle}
@@ -96,7 +96,7 @@ function DrawerPaw() {
                   MENU
                 </Text>
               </RouterLink>
-              <Link href="order">
+              <Link href="#/order">
                 <Text
                   _hover={{ color: "#654534", cursor: "pointer" }}
                   {...TextStyle}
