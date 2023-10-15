@@ -7,7 +7,7 @@ function CartLink() {
   const { openCart, cartQuantity } = useShoppingCart();
 
   return (
-    <Link href="/cart">
+    <Link href="#/cart">
       <FontAwesomeIcon
         icon={faShoppingCart}
         onClick={openCart}
