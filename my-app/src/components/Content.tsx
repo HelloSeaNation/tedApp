@@ -1,10 +1,13 @@
-import { Box, Flex, Center, Text, Button, Image, Stack, Link } from "@chakra-ui/react";
+import { Box, Flex, Center, Text, Button, Image, Stack, Link, useMediaQuery } from "@chakra-ui/react";
 import "@fontsource/coiny";
 import "@fontsource/marmelad";
 import TopMenu from "./TopMenu";
 import Map from "./Map";
 
 function Content() {
+
+  const [isSmallerThan768] = useMediaQuery("(max-width: 480px)");
+
   return (
     <>
       <TopMenu />
@@ -14,7 +17,7 @@ function Content() {
           <Center
             w="100px"
             bg="#f2f1e7"
-            width="106vh"
+            width={isSmallerThan768 ? "40vh" : "106vh"}
             height="100vh"
             id="home"
             marginTop="10vh"

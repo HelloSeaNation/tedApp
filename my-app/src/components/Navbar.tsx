@@ -1,19 +1,20 @@
-import { Box, Flex, Spacer, Link, Image } from "@chakra-ui/react";
+import { Box, Flex, Spacer, Link, Image, useMediaQuery } from "@chakra-ui/react";
 import "@fontsource/coiny";
 import DrawerPaw from "./DrawerPaw";
 import CartLink from "./CartLink";
 
 function Navbar() {
+  const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
 
   return (
     <Box
       bg="#F2F1E7"
-      maxWidth="110vh"
+      maxWidth={isSmallerThan480 ? "40vh" : "110vh"}
       color="white"
       py={50}
       px={6}
       top={0}
-      left={0}
+      left={isSmallerThan480 ? "-2" : 0}
       right={0}
       zIndex={1}
       position="fixed"

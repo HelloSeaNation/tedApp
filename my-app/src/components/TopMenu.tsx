@@ -1,4 +1,4 @@
-import { Box, Flex, Link } from "@chakra-ui/react";
+import { Box, Flex, Link, useMediaQuery } from "@chakra-ui/react";
 import "@fontsource/coiny";
 import CustomButton from "./CustomButton";
 import { Link as ScrollLink } from "react-scroll";
@@ -7,6 +7,8 @@ function TopMenu() {
   const handleOrderClick = () => {
     window.scrollTo(0, 0);
   };
+
+  const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
 
   return (
     <Box
@@ -23,9 +25,10 @@ function TopMenu() {
       mx="auto"
     >
       <Flex
-        direction={"row"}
+        direction={isSmallerThan480 ? "column" : "row"}
         justifyContent={"space-between"}
         marginTop={"-2vh"}
+        alignItems={"center"}
         marginBottom={"2vh"}
       >
         <ScrollLink // This is the link to the 2nd box
