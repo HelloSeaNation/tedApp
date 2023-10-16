@@ -13,7 +13,7 @@ function TopMenu() {
   return (
     <Box
       bg="#F2F1E7"
-      maxWidth="110vh"
+      maxWidth={isSmallerThan480 ? "40vh" : "110vh"}
       color="white"
       py={10}
       px={6}
@@ -29,7 +29,7 @@ function TopMenu() {
         justifyContent={"space-between"}
         marginTop={"-2vh"}
         alignItems={"center"}
-        marginBottom={"2vh"}
+        marginBottom={"1vh"}
       >
         <ScrollLink // This is the link to the 2nd box
           to="about"
@@ -51,7 +51,7 @@ function TopMenu() {
           to="contact"
           smooth={true}
           duration={2000}
-          offset={-80}
+          offset={isSmallerThan480 ?-200 :-80}
         >
           <CustomButton text="Contact" to="" />
         </ScrollLink>

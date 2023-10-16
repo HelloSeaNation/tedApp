@@ -15,7 +15,7 @@ function Navbar() {
       px={6}
       top={0}
       left={isSmallerThan480 ? "-2" : 0}
-      right={0}
+      right={isSmallerThan480? "1" : 0}
       zIndex={1}
       position="fixed"
       mx="auto"

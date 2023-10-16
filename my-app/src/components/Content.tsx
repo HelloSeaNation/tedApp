@@ -1,12 +1,21 @@
-import { Box, Flex, Center, Text, Button, Image, Stack, Link, useMediaQuery } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Center,
+  Text,
+  Button,
+  Image,
+  Stack,
+  Link,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import "@fontsource/coiny";
 import "@fontsource/marmelad";
 import TopMenu from "./TopMenu";
 import Map from "./Map";
 
 function Content() {
-
-  const [isSmallerThan768] = useMediaQuery("(max-width: 480px)");
+  const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
 
   return (
     <>
@@ -17,7 +26,7 @@ function Content() {
           <Center
             w="100px"
             bg="#f2f1e7"
-            width={isSmallerThan768 ? "40vh" : "106vh"}
+            width={isSmallerThan480 ? "35vh" : "106vh"}
             height="100vh"
             id="home"
             marginTop="10vh"
@@ -27,66 +36,89 @@ function Content() {
           {/* Section2 about me */}
           <Flex
             bg="#f2f1e7"
-            width="106vh"
+            width={isSmallerThan480 ? "34vh" : "106vh"}
             height="100vh"
             id="about"
             justifyContent={"space-between"}
             align={"center"}
             paddingTop={"10vh"}
           >
-            <Flex width="65%" flexDirection={"column"}>
-              <Stack spacing ={10}>
-              <Text
-                fontFamily={"Coiny"}
-                fontSize={"30px"}
-                color={"#654534"}
-                marginBottom={"-30px"}
-              >
-                Meet
-              </Text>
-        
-              <Text fontFamily={"Coiny"} fontSize={"30px"} color={"#654534"}>
-                Theodore Hall
-              </Text>
-             
-              <Text fontFamily={"Marmelad"} fontSize={"20px"} color={"#654534"}>
-                In the heart of bustling Auckland, New Zealand, where the city's
-                energy meets the tranquility of a charming corner, you'll
-                discover "Ted's Bar and Cafe." Its warm, inviting atmosphere and
-                mouthwatering dishes have made it a cherished destination for
-                locals and tourists alike. Steering this culinary ship is none
-                other than the enigmatic Theodore Hall, known affectionately as
-                Ted. With his salt-and-pepper hair and an ever-present twinkle
-                in his eye, Ted is the welcoming face behind this culinary gem.
-                As you step inside, you can't help but notice the restaurant's
-                distinctive logo – a bear – a symbol that represents not only
-                the establishment but also the spirit of this remarkable owner.
-              </Text>
+            <Flex
+              width={isSmallerThan480 ? "100%" : "65%"}
+              flexDirection={"column"}
+            >
+              <Stack spacing={10}>
+                <Text
+                  fontFamily={"Coiny"}
+                  fontSize={isSmallerThan480 ? "20px" : "30px"}
+                  color={"#654534"}
+                  marginBottom={"-30px"}
+                >
+                  Meet
+                </Text>
+
+                <Text
+                  fontFamily={"Coiny"}
+                  fontSize={isSmallerThan480 ? "20px" : "30px"}
+                  color={"#654534"}
+                >
+                  Theodore Hall
+                </Text>
+
+                <Text
+                  fontFamily={"Marmelad"}
+                  fontSize={isSmallerThan480 ? "15px" : "30px"}
+                  color={"#654534"}
+                >
+                  In the heart of bustling Auckland, New Zealand, where the
+                  city's energy meets the tranquility of a charming corner,
+                  you'll discover "Ted's Bar and Cafe." Its warm, inviting
+                  atmosphere and mouthwatering dishes have made it a cherished
+                  destination for locals and tourists alike. Steering this
+                  culinary ship is none other than the enigmatic Theodore Hall,
+                  known affectionately as Ted. With his salt-and-pepper hair and
+                  an ever-present twinkle in his eye, Ted is the welcoming face
+                  behind this culinary gem. As you step inside, you can't help
+                  but notice the restaurant's distinctive logo – a bear – a
+                  symbol that represents not only the establishment but also the
+                  spirit of this remarkable owner.
+                </Text>
               </Stack>
-             
             </Flex>
-            <Image src="assets/bear2.svg" alt="restaurant" width="220px" />
+            <Image
+              src="assets/bear2.svg"
+              alt="restaurant"
+              width={"220px"}
+              display={isSmallerThan480 ? "none" : "block"}
+            />
           </Flex>
           {/* Section 3 View Menu */}
           <Flex
             bg="#f2f1e7"
-            width="106vh"
+            width={isSmallerThan480 ? "35vh" : "106vh"}
             height="100vh"
             id="menu"
             justifyContent={"space-between"}
             align={"center"}
           >
-            <Flex flexDirection={"column"}>
+            <Flex
+              flexDirection={"column"}
+              justifyContent={isSmallerThan480 ? "space-between" : "normal"}
+            >
               <Text
                 fontFamily={"Coiny"}
-                fontSize={"70px"}
+                fontSize={isSmallerThan480 ? "40px" : "70px"}
                 color={"#654534"}
                 marginBottom={"-2vh"}
                 marginTop={"-7vh"}
               >
                 MAIN
               </Text>
-              <Text fontFamily={"Coiny"} fontSize={"70px"} color={"#654534"}>
+              <Text
+                fontFamily={"Coiny"}
+                fontSize={isSmallerThan480 ? "40px" : "70px"}
+                color={"#654534"}
+              >
                 MENU
               </Text>
               <Link href="FoodMenu.pdf">
@@ -96,13 +128,13 @@ function Content() {
                   border={"none"}
                   borderRadius={"5px"}
                   color={"#A17C5F"}
-                  width={"25vh"}
-                  height={"7vh"}
+                  width={isSmallerThan480 ? "14vh" : "25vh"}
+                  height={isSmallerThan480 ? "3vh" : "7vh"}
                   marginLeft={"7px"}
-                  marginTop={"5vh"}
+                  marginTop={isSmallerThan480 ? "3vh" : "5vh"}
                   textColor={"#654534"}
                   fontFamily={"Coiny"}
-                  fontSize={"30px"}
+                  fontSize={isSmallerThan480 ? "15px" : "30px"}
                   outline={"8px solid #A17C5F"}
                   _hover={{ bg: "#A17C5F", color: "#F2F1E7" }}
                   _active={{
@@ -115,42 +147,54 @@ function Content() {
                 </Button>{" "}
               </Link>
             </Flex>
-            <Image src="assets/bearCup.svg" alt="restaurant" width="350px" />
+            <Image
+              src="assets/bearCup.svg"
+              alt="restaurant"
+              width={isSmallerThan480 ? "180px" : "350px"}
+              marginBottom={isSmallerThan480 ? "5vh" : "0"}
+            />
           </Flex>{" "}
           {/* Section 4 Contact */}
           <Flex
             bg="#f2f1e7"
-            width="106vh"
+            width={isSmallerThan480 ? "40vh" : "106vh"}
             height="100vh"
             id="contact"
-            justifyContent={"space-between"}
+            justifyContent={isSmallerThan480 ? "center" : "space-between"}
             align={"center"}
+            direction={isSmallerThan480 ? "column" : "row"}
           >
             <Flex flexDirection={"column"}>
-              <Text fontFamily={"Coiny"} fontSize={"35px"} color={"#654534"}>
+              <Text fontFamily={"Coiny"} fontSize={isSmallerThan480 ? "20px" : "35px"} color={"#654534"}>
                 Address
               </Text>
               <Stack spacing={3}>
-              <Text fontSize={"25px"} color={"#654534"}>
-                243 Karangahape Road,</Text>
-                <Text fontSize={"25px"} color={"#654534"}>
-                Auckland CBD,</Text>
-                <Text fontSize={"25px"} color={"#654534"}>
-                Auckland 1010</Text>
+                <Text
+                  fontSize={isSmallerThan480 ? "15px" : "25px"}
+                  color={"#654534"}
+                >
+                  243 Karangahape Road,
+                </Text>
+                <Text fontSize={isSmallerThan480 ? "15px" : "25px"} color={"#654534"}>
+                  Auckland CBD,
+                </Text>
+                <Text fontSize={isSmallerThan480 ? "15px" : "25px"} color={"#654534"}>
+                  Auckland 1010
+                </Text>
               </Stack>
               <Text
                 fontFamily={"Coiny"}
-                fontSize={"35px"}
+                fontSize={isSmallerThan480 ? "20px" : "35px"}
                 color={"#654534"}
                 marginTop={"4vh"}
               >
                 Phone
               </Text>
-              <Text fontSize={"25px"} color={"#654534"}>
+              <Text fontSize={isSmallerThan480 ? "15px" : "25px"} color={"#654534"}>
                 027 430 0322
               </Text>
             </Flex>
-            <Map width="70%" height="500"/>
+            <Map width="70%" height="30vh" />
           </Flex>
         </Flex>
       </Box>
