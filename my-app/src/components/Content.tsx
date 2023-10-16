@@ -36,12 +36,12 @@ function Content() {
           {/* Section2 about me */}
           <Flex
             bg="#f2f1e7"
-            width={isSmallerThan480 ? "34vh" : "106vh"}
+            width={isSmallerThan480 ? "90%" : "106vh"}
             height="100vh"
             id="about"
             justifyContent={"space-between"}
             align={"center"}
-            paddingTop={"10vh"}
+            paddingTop={isSmallerThan480 ? "0" : "10vh"}
           >
             <Flex
               width={isSmallerThan480 ? "100%" : "65%"}
@@ -95,10 +95,10 @@ function Content() {
           {/* Section 3 View Menu */}
           <Flex
             bg="#f2f1e7"
-            width={isSmallerThan480 ? "35vh" : "106vh"}
+            width={isSmallerThan480 ? "90%" : "106vh"}
             height="100vh"
             id="menu"
-            justifyContent={"space-between"}
+            justifyContent={"space-evenly"}
             align={"center"}
           >
             <Flex
@@ -107,7 +107,7 @@ function Content() {
             >
               <Text
                 fontFamily={"Coiny"}
-                fontSize={isSmallerThan480 ? "40px" : "70px"}
+                fontSize={isSmallerThan480 ? "30px" : "70px"}
                 color={"#654534"}
                 marginBottom={"-2vh"}
                 marginTop={"-7vh"}
@@ -116,7 +116,7 @@ function Content() {
               </Text>
               <Text
                 fontFamily={"Coiny"}
-                fontSize={isSmallerThan480 ? "40px" : "70px"}
+                fontSize={isSmallerThan480 ? "30px" : "70px"}
                 color={"#654534"}
               >
                 MENU
@@ -135,7 +135,7 @@ function Content() {
                   textColor={"#654534"}
                   fontFamily={"Coiny"}
                   fontSize={isSmallerThan480 ? "15px" : "30px"}
-                  outline={"8px solid #A17C5F"}
+                  outline={isSmallerThan480 ? "3px solid" : "8px solid #A17C5F"}
                   _hover={{ bg: "#A17C5F", color: "#F2F1E7" }}
                   _active={{
                     bg: "#A17C5F",
@@ -157,7 +157,7 @@ function Content() {
           {/* Section 4 Contact */}
           <Flex
             bg="#f2f1e7"
-            width={isSmallerThan480 ? "40vh" : "106vh"}
+            width={isSmallerThan480 ? "90%" : "106vh"}
             height="100vh"
             id="contact"
             justifyContent={isSmallerThan480 ? "center" : "space-between"}
@@ -165,7 +165,11 @@ function Content() {
             direction={isSmallerThan480 ? "column" : "row"}
           >
             <Flex flexDirection={"column"}>
-              <Text fontFamily={"Coiny"} fontSize={isSmallerThan480 ? "20px" : "35px"} color={"#654534"}>
+              <Text
+                fontFamily={"Coiny"}
+                fontSize={isSmallerThan480 ? "20px" : "35px"}
+                color={"#654534"}
+              >
                 Address
               </Text>
               <Stack spacing={3}>
@@ -175,10 +179,16 @@ function Content() {
                 >
                   243 Karangahape Road,
                 </Text>
-                <Text fontSize={isSmallerThan480 ? "15px" : "25px"} color={"#654534"}>
+                <Text
+                  fontSize={isSmallerThan480 ? "15px" : "25px"}
+                  color={"#654534"}
+                >
                   Auckland CBD,
                 </Text>
-                <Text fontSize={isSmallerThan480 ? "15px" : "25px"} color={"#654534"}>
+                <Text
+                  fontSize={isSmallerThan480 ? "15px" : "25px"}
+                  color={"#654534"}
+                >
                   Auckland 1010
                 </Text>
               </Stack>
@@ -186,11 +196,14 @@ function Content() {
                 fontFamily={"Coiny"}
                 fontSize={isSmallerThan480 ? "20px" : "35px"}
                 color={"#654534"}
-                marginTop={"4vh"}
+                marginTop={isSmallerThan480 ? "0 " : "4vh"}
               >
                 Phone
               </Text>
-              <Text fontSize={isSmallerThan480 ? "15px" : "25px"} color={"#654534"}>
+              <Text
+                fontSize={isSmallerThan480 ? "15px" : "25px"}
+                color={"#654534"}
+              >
                 027 430 0322
               </Text>
             </Flex>

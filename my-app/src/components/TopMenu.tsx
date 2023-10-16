@@ -13,15 +13,15 @@ function TopMenu() {
   return (
     <Box
       bg="#F2F1E7"
-      maxWidth={isSmallerThan480 ? "40vh" : "110vh"}
+      maxWidth={isSmallerThan480 ? "100%" : "110vh"}
       color="white"
       py={10}
       px={6}
       top={150}
       left={0}
       right={0}
-      zIndex={2}
-      position="fixed"
+      zIndex={0}
+      position={isSmallerThan480 ? "absolute" : "fixed"}
       mx="auto"
     >
       <Flex
@@ -43,7 +43,7 @@ function TopMenu() {
           to="menu"
           smooth={true}
           duration={2000}
-          offset={-80}
+          offset={isSmallerThan480 ? -100 : -80}
         >
           <CustomButton text="Menu" to="" />
         </ScrollLink>
@@ -51,7 +51,7 @@ function TopMenu() {
           to="contact"
           smooth={true}
           duration={2000}
-          offset={isSmallerThan480 ?-200 :-80}
+          offset={-80}
         >
           <CustomButton text="Contact" to="" />
         </ScrollLink>
