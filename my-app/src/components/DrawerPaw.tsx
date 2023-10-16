@@ -14,6 +14,7 @@ import {
 import "@fontsource/coiny";
 import { Link as RouterLink } from "react-router-dom";
 import CartLink from "./CartLink";
+
 function DrawerPaw() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const TextStyle: {
@@ -28,6 +29,10 @@ function DrawerPaw() {
     color: "#A17C5F",
     marginTop: "20px",
     paddingLeft: "20px",
+  };
+
+  const handleOrderClick = () => {
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -57,13 +62,16 @@ function DrawerPaw() {
                 style={{ height: "35px" }}
                 onClick={onClose}
               />
-              <CartLink />
+              <Box onClick={onClose}>
+                   <CartLink />
+              </Box>
+           
             </DrawerHeader>
 
             <DrawerBody>
               <Link href="/" onClick={onClose}>
                 <Text
-                  _hover={{ color: "#654534", cursor: "pointer"}}
+                  _hover={{ color: "#654534", cursor: "pointer" }}
                   {...TextStyle}
                 >
                   HOME
@@ -96,9 +104,15 @@ function DrawerPaw() {
                   MENU
                 </Text>
               </RouterLink>
-              <Link href="#/order">
+              <Link
+                href="#/order"
+                onClick={() => {
+                  handleOrderClick();
+                  onClose(); 
+                }}
+              >
                 <Text
-                  _hover={{ color: "#654534", cursor: "pointer" }}
+                  _hover={{ color: "#654534", cursor: "pointer", textDecoration: "none" }}
                   {...TextStyle}
                 >
                   ORDER

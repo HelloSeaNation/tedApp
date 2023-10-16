@@ -1,13 +1,16 @@
-// import React from "react";
+import React from "react";
 import { Button } from "@chakra-ui/react";
 import "@fontsource/coiny";
 
 interface CustomButtonProps {
   text: string;
   to: string;
+  onClick?: () => void;
 }
 
+
 function CustomButton({ text }: CustomButtonProps) {
+
   return (
     <Button
       variant={"outline"}

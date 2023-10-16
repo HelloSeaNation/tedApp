@@ -4,6 +4,10 @@ import CustomButton from "./CustomButton";
 import { Link as ScrollLink } from "react-scroll";
 
 function TopMenu() {
+  const handleOrderClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Box
       bg="#F2F1E7"
@@ -48,7 +52,7 @@ function TopMenu() {
         >
           <CustomButton text="Contact" to="" />
         </ScrollLink>
-        <Link href="#/order">
+        <Link href="#/order" onClick={handleOrderClick}>
           <CustomButton text="Order" to="" />
         </Link>
 
