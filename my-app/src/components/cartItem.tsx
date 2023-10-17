@@ -12,41 +12,48 @@ type CartItemProps = {
 const textStyles2 = {
   fontFamily: "Coiny",
   color: "#A17C5F",
-  fontSize: "20px",
-  paddingBottom: "50px",
-  paddingTop: "30px",
+  paddingBottom: "10px",
+  paddingTop: "10px",
 };
-
-// const textStyleItem = {};
 
 export function CartItem({ id, quantity }: CartItemProps) {
   const { removeFromCart } = useShoppingCart();
   const item = storeItems.find((i) => i.id === id);
   if (item == null) return null;
   return (
-    <Box>
-      <Flex alignItems={"center"} width={"95vh"} justifyContent={"flex-start"}>
+    <Box width="100%">
+      <Flex alignItems={"center"} width={"100%"} justifyContent={"flex-start"}>
         <Stack>
           <Image
             src={item.imgUrl}
             style={{
-              height: "15vh",
-              width: "15vh",
+              height: "10vh",
+              width: "10vh",
               objectFit: "cover",
               borderRadius: "10px",
               border: "4px solid #A17C5F",
-              marginRight: "10vh",
             }}
           />
         </Stack>
         <Stack
-          spacing={2}
-          width={"70vh"}
+          spacing={{ base: 2, lg: 10 }}
+          width={{ base: "70%", lg: "60vh" }}
           flexDirection={"row"}
           alignItems={"center"}
+          justifyContent={"flex-start"}
+          marginLeft={{ base: "2vh", lg: "10vh" }}
+          // marginRight={{ base: "2vh", lg: "10vh" }}
         >
-          <Box width={"25vh"}>
-            <Text style={textStyles2}>{item.name}</Text>
+          <Box width={{ base: "80%", lg: "25vh" }}>
+            <Text
+              fontFamily={"Coiny"}
+              color={"#A17C5F"}
+              fontSize={{ base: "15px", md: "20px" }}
+              paddingBottom={"10px"}
+              paddingTop={"10px"}
+            >
+              {item.name}
+            </Text>
           </Box>
           <Box>
             {quantity > 1 && (
@@ -54,8 +61,9 @@ export function CartItem({ id, quantity }: CartItemProps) {
                 style={{
                   fontFamily: "Arial",
                   color: "#A17C5F",
-                  fontSize: "20px",
                 }}
+                fontSize={{ base: "15px", lg: "20px" }}
+                width={{ base: "100%", lg: "10vh" }}
               >
                 {" "}
                 x {quantity}
@@ -63,10 +71,14 @@ export function CartItem({ id, quantity }: CartItemProps) {
             )}
           </Box>
         </Stack>
-        <Flex alignItems="center" width="15vh" justifyContent={"flex-end"}>
-          <Box width="20vh">
+        <Flex
+          alignItems="center"
+          width={{ base: "50%", lg: "10vh" }}
+          justifyContent={"flex-end"}
+        >
+          <Box width={{ base: "65%", lg: "20vh" }}>
             {" "}
-            <Text style={textStyles2}>
+            <Text style={textStyles2} fontSize={{ base: "15px", md: "20px" }}>
               ${(Number(item.price.toFixed(2)) * Number(quantity)).toFixed(2)}
             </Text>
           </Box>

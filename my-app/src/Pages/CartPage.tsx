@@ -23,9 +23,8 @@ function CartPage({}: RoutedButtonProps) {
   const textStyles = {
     fontFamily: "Coiny",
     color: "#654534",
-    fontSize: "30px",
     paddingBottom: "10px",
-    paddingTop: "30px",
+    paddingTop: "2vh"
   };
   const { cartItems, cartQuantity } = useShoppingCart();
 
@@ -52,14 +51,14 @@ function CartPage({}: RoutedButtonProps) {
         alignItems: "center",
       }}
     >
-      <Flex marginTop="14vh" direction={"column"}>
-        <Text style={textStyles}>Cart</Text>
+      <Flex marginTop={"10vh"} direction={"column"} width={{base:"92%", xl:"100vh"}}>
+        <Text style={textStyles} paddingTop={{base:"70px", md:"50px"}}>Cart</Text>
 
         <Stack
-          spacing={5}
+          spacing={{ base: 2, lg: 5 }}
           backgroundColor="#FFFFFA"
           padding="2vh"
-          width="100vh"
+          width={{ md: "100%", lg: "100vh" }}
           divider={<StackDivider borderColor="#F2F1E7" />}
         >
           {cartItems.length === 0 ? (
@@ -89,8 +88,8 @@ function CartPage({}: RoutedButtonProps) {
                 style={{
                   fontFamily: "Coiny",
                   color: "#654534",
-                  fontSize: "20px",
                 }}
+                fontSize={{ base: "15px", lg: "20px" }}
               >
                 You have {cartQuantity} items in your cart
               </Text>
@@ -103,8 +102,15 @@ function CartPage({}: RoutedButtonProps) {
         </Stack>
 
         <Box display="flex" justifyContent={"flex-end"} marginRight={"3vh"}>
-          <Text style={textStyles}>Total = $</Text>
-          <Text style={{ ...textStyles, fontSize: "30px" }}>{totalPrice}</Text>
+          <Text style={textStyles} fontSize={{ base: "20px", lg: "30px" }}>
+            Total = $
+          </Text>
+          <Text
+            style={{ ...textStyles }}
+            fontSize={{ base: "20px", lg: "30px" }}
+          >
+            {totalPrice}
+          </Text>
         </Box>
         {/* //this takes the cart items price {if any item in cart} and returns the total of the item price by id times cart quantity */}
       </Flex>
