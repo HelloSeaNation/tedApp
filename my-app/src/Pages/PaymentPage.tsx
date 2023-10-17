@@ -28,48 +28,22 @@ function PaymentPage({}: OrderButtonProps) {
     borderRadius: "50px",
     height: "60px",
     width: "25vh",
+    marginTop: "5vh",
   };
 
   const textStyles = {
     fontFamily: "Coiny",
     color: "#654534",
-    fontSize: "25px",
-    paddingBottom: "50px",
     paddingTop: "30px",
   };
   const simpleTextStyles = { fontFamily: "sans-serif", color: "#654534" };
 
-  const leftContainer = { width: "52vh", marginTop: "15vh", marginLeft: "5vh" };
-  const rightContainer = {
-    width: "52vh",
-    marginTop: "15vh",
-    marginLeft: "5vh",
+  const leftContainer = {
+    paddingLeft: "3vh",
   };
-
-  const monthInputRef = React.useRef(null);
-  const yearInputRef = React.useRef(null);
-  const [showWarning, setShowWarning] = React.useState(false);
-
-  const handleMonthInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let inputValue = e.target.value;
-    // Remove non-numeric characters
-    inputValue = inputValue.replace(/\D/g, "");
-
-    // Ensure the value is between 1 and 12
-    if (Number(inputValue) > 12 || Number(inputValue) < 0) {
-      inputValue = "";
-      setShowWarning(true); // Show warning when value is greater than 12
-    } else {
-      setShowWarning(false); // Hide warning when value is within 1-12
-    }
-
-    // Move focus to the year input when 2 digits are entered
-    if (inputValue.length === 2 && yearInputRef.current) {
-      (yearInputRef.current as HTMLInputElement).focus();
-    }
-
-    // Update the input value
-    e.target.value = inputValue;
+  const rightContainer = {
+    marginTop: "15.5vh",
+    paddingLeft: "3vh",
   };
 
   const { cartItems } = useShoppingCart();
@@ -81,105 +55,152 @@ function PaymentPage({}: OrderButtonProps) {
     .toFixed(2);
 
   const { clearCart } = useShoppingCart();
+  
 
   return (
     <Box>
-      <Flex justifyContent={"center"}>
-        <Box style={leftContainer}>
+      <Flex
+        justifyContent={"center"}
+        direction={{ base: "column-reverse", lg: "row" }}
+      >
+        <Box
+          style={leftContainer}
+          marginTop={{ base: "0vh", lg: "15vh" }}
+          width={{ base: "100%", lg: "52vh" }}
+        >
           <Box>
-            <Text style={textStyles}>Contact Info</Text>
+            <Text
+              style={textStyles}
+              fontSize={{ base: "20px", md: "25px" }}
+              paddingBottom={{ base: "10px", lg: "3vh" }}
+            >
+              Contact Info
+            </Text>
           </Box>
           <Stack
             spacing={4}
             display="grid"
-            gridTemplateColumns={"repeat(2, 1fr)"}
-            maxWidth="600"
+            gridTemplateColumns={{
+              base: "repeat(1,1fr)",
+              md: "repeat(2, 1fr)",
+            }}
+            width={{ base: "94%", md: "85%", lg: "95%" }}
           >
-            <Text style={simpleTextStyles}>Name</Text>
+            <Text
+              style={simpleTextStyles}
+              display={{ base: "none", lg: "block" }}
+            >
+              Name
+            </Text>
             <Input
               borderColor="#A17C5F"
               focusBorderColor="#654534"
-              width="35vh"
+              placeholder={"Name"}
             ></Input>
-            <Text style={simpleTextStyles}>Number</Text>
-
+            <Text
+              style={simpleTextStyles}
+              display={{ base: "none", lg: "block" }}
+            >
+              Phone
+            </Text>
             <Input
               borderColor="#A17C5F"
               focusBorderColor="#654534"
               type="tel"
+              placeholder="Phone Number"
             />
           </Stack>
 
           <Box paddingTop="30">
-            <Text style={textStyles}>Payment</Text>
+            <Text
+              style={textStyles}
+              fontSize={{ base: "20px", md: "25px" }}
+              paddingBottom={{ base: "10px", lg: "2vh" }}
+            >
+              Payment
+            </Text>
           </Box>
           <Stack
             spacing={4}
             display="grid"
-            gridTemplateColumns={"repeat(2, 1fr)"}
-            maxWidth="600"
+            gridTemplateColumns={{
+              base: "repeat(1,1fr)",
+              lg: "repeat(2, 1fr)",
+            }}
+            width={{ base: "94%", md: "85%", lg: "95%" }}
           >
-            <Text style={simpleTextStyles}>Name On Card</Text>
+            <Text
+              style={simpleTextStyles}
+              display={{ base: "none", lg: "block" }}
+            >
+              Name On Card
+            </Text>
             <Input
               borderColor="#A17C5F"
               focusBorderColor="#654534"
-              width="35vh"
+              placeholder="Name on Card"
+              
             ></Input>
 
-            <Text style={simpleTextStyles}>Card Number</Text>
-            <Input borderColor="#A17C5F" focusBorderColor="#654534"></Input>
+            <Text
+              style={simpleTextStyles}
+              display={{ base: "none", lg: "block" }}
+            >
+              Card Number
+            </Text>
+            <Input
+              borderColor="#A17C5F"
+              focusBorderColor="#654534"
+              placeholder="Card Number"
+              maxLength={19}
+            ></Input>
           </Stack>
 
-          <Box display="flex" marginTop="2vh" justifyContent={"space-between"}>
-            <Flex width="23vh" alignItems={"center"}>
+          <Box
+            display="flex"
+            marginTop="2vh"
+            justifyContent={{ base: "flex-start", lg: "flex-startS" }}
+            flexDirection={{ base: "column", md: "row" }}
+          >
+            <Flex width={{ base: "30vh", lg: "23vh" }} alignItems={"center"}>
               <Text style={simpleTextStyles}>EXP</Text>
               <Input
-                ref={monthInputRef}
-                type="text"
+                type="month"
                 maxLength={2}
                 placeholder="MM"
-                name="month"
-                onChange={handleMonthInput}
+                name="month/year"
                 focusBorderColor="#654534"
+                marginLeft={{ base: "10px", lg: "30px" }}
+                width={{ base: "25vh", md: "15vh" }}
                 style={{
                   borderColor: "#A17C5F",
-                  marginLeft: "30px",
-                  width: "8vh",
-                }}
-              />
-              <Text marginLeft={"10px"}>/</Text>
-              <Input
-                ref={yearInputRef}
-                type="text"
-                maxLength={2}
-                placeholder="YY"
-                name="year"
-                focusBorderColor="#654534"
-                style={{
-                  borderColor: "#A17C5F",
-                  marginLeft: "10px",
-                  width: "8vh",
                 }}
               />
             </Flex>
-            <Flex width="20vh" alignItems={"center"}>
+            <Flex
+              width={{ base: "20vh", md: "15vh" }}
+              alignItems={"center"}
+              marginTop={{ base: "2vh", md: "0vh" }}
+            >
               <Text style={simpleTextStyles}>CVC(?)</Text>
               <Input
                 borderColor="#A17C5F"
+                maxLength={3}
                 focusBorderColor="#654534"
                 marginLeft="10px"
               ></Input>
             </Flex>
           </Box>
-          {showWarning && (
-            <Box style={{ color: "red", marginTop: "1vh" }}>
-              Month should be between 1 and 12.
-            </Box>
-          )}
         </Box>
 
-        <Box style={rightContainer}>
-          <Text style={textStyles}>Order Summary</Text>
+        <Box style={rightContainer} width={{ base: "100%", md: "52vh" }}>
+          <Text
+            style={textStyles}
+            fontSize={{ base: "20px", md: "25px" }}
+            paddingBottom={{ base: "10px", lg: "2vh" }}
+          >
+            Order Summary
+          </Text>
           <UnorderedList>
             {cartItems.map((item: { id: number; quantity: number }) => (
               <SummaryItem name={""} price={0} key={item.id} {...item} />
@@ -194,24 +215,26 @@ function PaymentPage({}: OrderButtonProps) {
             width={"50vh"}
             marginTop={"2vh"}
           ></Input>
-          <Text style={textStyles}>Order Total ${totalPrice}</Text>
-          <Box display="flex" justifyContent="center">
-            <Link to="/thank-you">
-              <Button
-                style={buttonStyles}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                onClick={() => {
-                  clearCart();
-                }}
-              >
-                {" "}
-                ORDER NOW{" "}
-              </Button>
-            </Link>
-          </Box>
+          <Text style={textStyles} fontSize={{ base: "20px", md: "25px" }}>
+            Order Total ${totalPrice}
+          </Text>
         </Box>
       </Flex>
+      <Box display="flex" justifyContent="center">
+        <Link to="/thank-you">
+          <Button
+            style={buttonStyles}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={() => {
+              clearCart();
+            }}
+          >
+            {" "}
+            ORDER NOW{" "}
+          </Button>
+        </Link>
+      </Box>
     </Box>
   );
 }

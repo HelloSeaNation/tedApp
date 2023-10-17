@@ -1,4 +1,4 @@
-import { Box, Flex, Link, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Link} from "@chakra-ui/react";
 import "@fontsource/coiny";
 import CustomButton from "./CustomButton";
 import { Link as ScrollLink } from "react-scroll";
@@ -8,12 +8,10 @@ function TopMenu() {
     window.scrollTo(0, 0);
   };
 
-  const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-
   return (
     <Box
       bg="#F2F1E7"
-      maxWidth={isSmallerThan480 ? "100%" : "110vh"}
+      maxWidth={{base: "100%", md: "100%", xl: "110vh"}}
       color="white"
       py={10}
       px={6}
@@ -21,11 +19,16 @@ function TopMenu() {
       left={0}
       right={0}
       zIndex={0}
-      position={isSmallerThan480 ? "absolute" : "fixed"}
+      position={{base: "absolute", md: "absolute", lg:"fixed", xl: "fixed"}}
       mx="auto"
     >
       <Flex
-        direction={isSmallerThan480 ? "column" : "row"}
+        direction={{
+          base: "column", // For screen widths less than 480 pixels
+          md: "column", // For screen widths 480 pixels and larger (default)
+          lg:"row", // 1024 til 1280 pixels
+          xl: "row", // 1280 til max
+        }}
         justifyContent={"space-between"}
         marginTop={"-2vh"}
         alignItems={"center"}
@@ -35,7 +38,7 @@ function TopMenu() {
           to="about"
           smooth={true}
           duration={2000}
-          offset={-70}
+          offset={-30}
         >
           <CustomButton text="About" to="" />
         </ScrollLink>
@@ -43,7 +46,7 @@ function TopMenu() {
           to="menu"
           smooth={true}
           duration={2000}
-          offset={isSmallerThan480 ? -100 : -80}
+          offset={80}
         >
           <CustomButton text="Menu" to="" />
         </ScrollLink>
@@ -51,7 +54,7 @@ function TopMenu() {
           to="contact"
           smooth={true}
           duration={2000}
-          offset={-80}
+          offset={-50}
         >
           <CustomButton text="Contact" to="" />
         </ScrollLink>

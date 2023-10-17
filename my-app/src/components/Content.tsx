@@ -7,7 +7,6 @@ import {
   Image,
   Stack,
   Link,
-  useMediaQuery,
 } from "@chakra-ui/react";
 import "@fontsource/coiny";
 import "@fontsource/marmelad";
@@ -15,8 +14,6 @@ import TopMenu from "./TopMenu";
 import Map from "./Map";
 
 function Content() {
-  const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-
   return (
     <>
       <TopMenu />
@@ -26,7 +23,7 @@ function Content() {
           <Center
             w="100px"
             bg="#f2f1e7"
-            width={isSmallerThan480 ? "35vh" : "106vh"}
+            width={{ lg: "95%", xl: "107vh" }}
             height="100vh"
             id="home"
             marginTop="10vh"
@@ -36,21 +33,19 @@ function Content() {
           {/* Section2 about me */}
           <Flex
             bg="#f2f1e7"
-            width={isSmallerThan480 ? "90%" : "106vh"}
+            width={"90%"}
+            maxWidth={{ lg: "100%", xl: "100vh" }}
             height="100vh"
             id="about"
             justifyContent={"space-between"}
             align={"center"}
-            paddingTop={isSmallerThan480 ? "0" : "10vh"}
+            paddingTop={{ md: "0", lg: "10vh" }}
           >
-            <Flex
-              width={isSmallerThan480 ? "100%" : "65%"}
-              flexDirection={"column"}
-            >
-              <Stack spacing={10}>
+            <Flex width={{ md: "80%", lg: "70%" }} flexDirection={"column"}>
+              <Stack spacing={{ base: "7", md: "10" }}>
                 <Text
                   fontFamily={"Coiny"}
-                  fontSize={isSmallerThan480 ? "20px" : "30px"}
+                  fontSize={{ md: "40px", lg: "50px" }}
                   color={"#654534"}
                   marginBottom={"-30px"}
                 >
@@ -59,7 +54,7 @@ function Content() {
 
                 <Text
                   fontFamily={"Coiny"}
-                  fontSize={isSmallerThan480 ? "20px" : "30px"}
+                  fontSize={{ md: "40px", lg: "50px" }}
                   color={"#654534"}
                 >
                   Theodore Hall
@@ -67,7 +62,7 @@ function Content() {
 
                 <Text
                   fontFamily={"Marmelad"}
-                  fontSize={isSmallerThan480 ? "15px" : "30px"}
+                  fontSize={{ base: "15px", md: "20px", lg: "25px" }}
                   color={"#654534"}
                 >
                   In the heart of bustling Auckland, New Zealand, where the
@@ -89,34 +84,37 @@ function Content() {
               src="assets/bear2.svg"
               alt="restaurant"
               width={"220px"}
-              display={isSmallerThan480 ? "none" : "block"}
+              display={{ base: "none", md: "block" }}
             />
           </Flex>
           {/* Section 3 View Menu */}
           <Flex
             bg="#f2f1e7"
-            width={isSmallerThan480 ? "90%" : "106vh"}
+            width={"90%"}
+            maxWidth={{ base: "100%", xl: "100vh" }}
             height="100vh"
             id="menu"
-            justifyContent={"space-evenly"}
+            justifyContent={{ base: "center", md: "space-evenly" }}
             align={"center"}
+            direction={{ base: "column-reverse", md: "row" }}
+            paddingTop={{ base: "20vh", md: "0" }}
           >
             <Flex
               flexDirection={"column"}
-              justifyContent={isSmallerThan480 ? "space-between" : "normal"}
+              justifyContent={"normal"}
+              alignItems={"center"}
             >
               <Text
                 fontFamily={"Coiny"}
-                fontSize={isSmallerThan480 ? "30px" : "70px"}
+                fontSize={{ base: "40px", md: "70px" }}
                 color={"#654534"}
                 marginBottom={"-2vh"}
-                marginTop={"-7vh"}
               >
                 MAIN
               </Text>
               <Text
                 fontFamily={"Coiny"}
-                fontSize={isSmallerThan480 ? "30px" : "70px"}
+                fontSize={{ base: "40px", md: "70px" }}
                 color={"#654534"}
               >
                 MENU
@@ -128,14 +126,14 @@ function Content() {
                   border={"none"}
                   borderRadius={"5px"}
                   color={"#A17C5F"}
-                  width={isSmallerThan480 ? "14vh" : "25vh"}
-                  height={isSmallerThan480 ? "3vh" : "7vh"}
+                  width={{ base: "30vh", md: "20vh" }}
+                  height={{ base: "7vh", md: "5vh" }}
                   marginLeft={"7px"}
-                  marginTop={isSmallerThan480 ? "3vh" : "5vh"}
+                  marginTop={{ base: "5vh", md: "2vh" }}
                   textColor={"#654534"}
                   fontFamily={"Coiny"}
-                  fontSize={isSmallerThan480 ? "15px" : "30px"}
-                  outline={isSmallerThan480 ? "3px solid" : "8px solid #A17C5F"}
+                  fontSize={{ base: "30", md: "40px" }}
+                  outline={{ base: "3px solid", md: "8px solid #A17C5F" }}
                   _hover={{ bg: "#A17C5F", color: "#F2F1E7" }}
                   _active={{
                     bg: "#A17C5F",
@@ -143,66 +141,59 @@ function Content() {
                     transform: "scale(0.8)",
                   }}
                 >
-                  View Menu
+                  Menu
                 </Button>{" "}
               </Link>
             </Flex>
             <Image
               src="assets/bearCup.svg"
               alt="restaurant"
-              width={isSmallerThan480 ? "180px" : "350px"}
-              marginBottom={isSmallerThan480 ? "5vh" : "0"}
+              width={{ base: "180px", md: "350px" }}
+              marginBottom={{ base: "2vh", md: "0" }}
             />
           </Flex>{" "}
           {/* Section 4 Contact */}
           <Flex
             bg="#f2f1e7"
-            width={isSmallerThan480 ? "90%" : "106vh"}
+            width={"90%"}
+            maxWidth={{ lg: "100%", xl: "100vh" }}
             height="100vh"
             id="contact"
-            justifyContent={isSmallerThan480 ? "center" : "space-between"}
+            justifyContent={{ base: "center", md: "space-between" }}
             align={"center"}
-            direction={isSmallerThan480 ? "column" : "row"}
+            direction={{ base: "column", md: "row" }}
           >
             <Flex flexDirection={"column"}>
               <Text
                 fontFamily={"Coiny"}
-                fontSize={isSmallerThan480 ? "20px" : "35px"}
+                fontSize={{ base: "20px", md: "35px" }}
                 color={"#654534"}
               >
                 Address
               </Text>
-              <Stack spacing={3}>
-                <Text
-                  fontSize={isSmallerThan480 ? "15px" : "25px"}
-                  color={"#654534"}
-                >
+              <Stack spacing={{ base: "1", md: "-32" }}>
+                <Text fontSize={{ base: "15px", md: "25px" }} color={"#654534"}>
                   243 Karangahape Road,
                 </Text>
-                <Text
-                  fontSize={isSmallerThan480 ? "15px" : "25px"}
-                  color={"#654534"}
-                >
+                <Text fontSize={{ base: "15px", md: "25px" }} color={"#654534"}>
                   Auckland CBD,
                 </Text>
-                <Text
-                  fontSize={isSmallerThan480 ? "15px" : "25px"}
-                  color={"#654534"}
-                >
+                <Text fontSize={{ base: "15px", md: "25px" }} color={"#654534"}>
                   Auckland 1010
                 </Text>
               </Stack>
               <Text
                 fontFamily={"Coiny"}
-                fontSize={isSmallerThan480 ? "20px" : "35px"}
+                fontSize={{ base: "20px", md: "35px" }}
                 color={"#654534"}
-                marginTop={isSmallerThan480 ? "0 " : "4vh"}
+                marginTop={{ base: "2vh", md: "4vh" }}
               >
                 Phone
               </Text>
               <Text
-                fontSize={isSmallerThan480 ? "15px" : "25px"}
+                fontSize={{ base: "15px", md: "25px" }}
                 color={"#654534"}
+                marginBottom={{ base: "4vh", md: "0" }}
               >
                 027 430 0322
               </Text>
