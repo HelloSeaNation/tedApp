@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, useMediaQuery } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import "@fontsource/coiny";
 
 interface CustomButtonProps {
@@ -9,8 +9,7 @@ interface CustomButtonProps {
 }
 
 function CustomButton({ text }: CustomButtonProps) {
-  const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-  // direction={isSmallerThan480 ? "column" : "row"}
+
   return (
     <Button
       variant={"outline"}
@@ -18,13 +17,38 @@ function CustomButton({ text }: CustomButtonProps) {
       border={"none"}
       borderRadius={"5px"}
       color={"#A17C5F"}
-      width={isSmallerThan480 ? "30vh" : "17vh"}
-      height={isSmallerThan480 ? "4vh" : "7vh"}
+      width={{
+        base: "30vh",
+        md: "58vh",
+        lg: "17vh",
+        xl: "17vh",
+      }}
+      height={{
+        base: "4vh",
+        md: "5vh",
+        lg: "7vh",
+        xl: "7vh",
+      }}
       textColor={"#654534"}
-      marginBottom={isSmallerThan480 ? "2vh" : "0vh"}
+      marginBottom={{
+        base: "2vh",
+        md: "2vh",
+        lg: "0",
+        xl: "5vh",
+      }}
       fontFamily={"Coiny"}
-      fontSize={isSmallerThan480 ? "20px" : "25px"}
-      outline={isSmallerThan480 ? "3px solid" : "8px solid #A17C5F"}
+      fontSize={{
+        base: "20px",
+        md: "25px",
+        lg: "25px",
+        xl: "25px",
+      }}
+      outline={{
+        base: "3px solid #A17C5F",
+        md: "5px solid #A17C5F",
+        lg: "8px solid #A17C5F",
+        xl: "8px solid #A17C5F",
+      }}
       _hover={{ bg: "#A17C5F", color: "#F2F1E7" }}
       _active={{ bg: "#A17C5F", color: "#F2F1E7", transform: "scale(0.8)" }}
     >

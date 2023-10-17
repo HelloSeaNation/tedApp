@@ -4,25 +4,27 @@ import {
   Spacer,
   Link,
   Image,
-  useMediaQuery,
 } from "@chakra-ui/react";
 import "@fontsource/coiny";
 import DrawerPaw from "./DrawerPaw";
 import CartLink from "./CartLink";
 
 function Navbar() {
-  const [isSmallerThan480] = useMediaQuery("(max-width: 480px)");
-
+  
   return (
     <Box
       bg="#F2F1E7"
-      maxWidth={isSmallerThan480 ? "100%" : "110vh"}
+      maxWidth={{
+        base: "101%", 
+        md: "100%",
+        xl: "110vh", 
+      }}
       color="white"
       py={50}
       px={6}
-      top={isSmallerThan480 ? "-5" : 0}
-      left={isSmallerThan480 ? "-2" : 0}
-      right={isSmallerThan480 ? "1" : 0}
+      top={{ base: -5 , md: 0 }}
+      left={{ base: -2 , md: 0 }}
+      right={{ base: -1 , md: 0 }}
       zIndex={1}
       position="fixed"
       mx="auto"
