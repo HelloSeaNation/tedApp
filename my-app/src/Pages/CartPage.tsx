@@ -34,11 +34,16 @@ function CartPage({}: RoutedButtonProps) {
     }, 0)
     .toFixed(2);
 
+    const handleCartClick = () => {
+      window.scrollTo(0, 0);
+    };
+
   const handleClick = () => {
     if (cartItems.length === 0) {
       alert("Your cart is empty!");
     } else {
       window.location.href = `/#/cart/payment`;
+      handleCartClick();
     }
   };
 

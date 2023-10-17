@@ -13,41 +13,39 @@ export const ThankYou = () => {
   const textStyles = {
     fontFamily: "Coiny",
     color: "#654534",
-    fontSize: "25px",
-
     paddingTop: "30px",
   };
 
   const textStyles2 = {
     fontFamily: "Coiny",
     color: "#654534",
-    fontSize: "18px",
     paddingBottom: "30px",
-  };
-
-  const containerStyles = {
-    marginTop: "130px",
   };
 
   return (
     <>
       <Center>
-        <Box style={containerStyles}>
-          <Box style={textStyles}>
+        <Box marginTop={{ base: "17vh", lg: "15vh" }}>
+          <Box style={textStyles} fontSize={{ base: "18px", lg: "25px" }}>
             <Text>Thank you for your order!</Text>
           </Box>
         </Box>
       </Center>
 
       <Center>
-        <Box style={textStyles2}>
+        <Box
+          style={textStyles2}
+          fontSize={{ base: "18px", lg: "25px" }}
+          width={{ base: "90%" }}
+          textAlign={"center"}
+        >
           <Text>Your order will be ready to collect in 20 minutes!</Text>
         </Box>
       </Center>
 
       <Box>
         <Center>
-          <Map width="60%" height="450" />
+          <Map width="80%" height="380" />
         </Center>
       </Box>
     </>

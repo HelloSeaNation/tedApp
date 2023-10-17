@@ -55,7 +55,9 @@ function PaymentPage({}: OrderButtonProps) {
     .toFixed(2);
 
   const { clearCart } = useShoppingCart();
-  
+  const handleThankYouClick = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <Box>
@@ -228,6 +230,7 @@ function PaymentPage({}: OrderButtonProps) {
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => {
               clearCart();
+              handleThankYouClick();
             }}
           >
             {" "}
