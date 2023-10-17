@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { Box, Button, Text, Image } from "@chakra-ui/react";
 import { useShoppingCart } from "./cartFunction";
 
@@ -13,13 +13,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ id, imgUrl, price, name }: CardProps) => {
   //onAddClick  - add to button
-  const textStyles = {
-    fontFamily: "Coiny",
-    color: "#A17C5F",
-    fontSize: "18px",
-    paddingBottom: "8vh",
-    display: "flex",
-  };
+
   const imageStyles = {
     width: "180px",
     height: "180px",
@@ -50,11 +44,25 @@ const Card: React.FC<CardProps> = ({ id, imgUrl, price, name }: CardProps) => {
   const quantity = getItemQuantity(id);
 
   return (
-    <Box className="card" style={textStyles} flexDirection={"column"}>
-      <Image src={imgUrl} style={imageStyles} />
-        <Text>{name}</Text>
-        <Text>${price}</Text>
-
+    <Box
+      className="card"
+      fontFamily={"Coiny"}
+      color={"#A17C5F"}
+      fontSize={"18px"}
+      paddingBottom={"8vh"}
+      display={"flex"}
+      alignItems={{ base: "center", md: "flex-start" }}
+      flexDirection={"column"}
+    >
+      <Image
+        src={imgUrl}
+        width={{base:"250px",md:"220px",lg:"180px"}}
+        height={{base:"250px",md:"220px",lg:"180px"}}
+        border={"6px solid #A17C5F"}
+        borderRadius={"5px"}
+      />
+      <Text>{name}</Text>
+      <Text>${price.toFixed(2)}</Text>
 
       <Box>
         {quantity === 0 ? (

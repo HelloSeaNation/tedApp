@@ -38,7 +38,7 @@ function TopMenu() {
           to="about"
           smooth={true}
           duration={2000}
-          offset={-70}
+          offset={-30}
         >
           <CustomButton text="About" to="" />
         </ScrollLink>
@@ -54,7 +54,7 @@ function TopMenu() {
           to="contact"
           smooth={true}
           duration={2000}
-          offset={-80}
+          offset={-50}
         >
           <CustomButton text="Contact" to="" />
         </ScrollLink>
