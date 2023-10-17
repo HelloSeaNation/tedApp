@@ -141,7 +141,6 @@ function PaymentPage({}: OrderButtonProps) {
               borderColor="#A17C5F"
               focusBorderColor="#654534"
               placeholder="Name on Card"
-              
             ></Input>
 
             <Text
@@ -214,7 +213,7 @@ function PaymentPage({}: OrderButtonProps) {
             placeholder="Order Notes"
             paddingBottom={"10vh"}
             paddingTop={"2vh"}
-            width={"50vh"}
+            width={{ base: "94%", md:"100%", lg: "50vh" }}
             marginTop={"2vh"}
           ></Input>
           <Text style={textStyles} fontSize={{ base: "20px", md: "25px" }}>
