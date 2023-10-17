@@ -23,8 +23,7 @@ function CartPage({}: RoutedButtonProps) {
   const textStyles = {
     fontFamily: "Coiny",
     color: "#654534",
-    paddingBottom: "10px",
-    paddingTop: "2vh"
+    paddingBottom: "1vh",
   };
   const { cartItems, cartQuantity } = useShoppingCart();
 
@@ -51,8 +50,14 @@ function CartPage({}: RoutedButtonProps) {
         alignItems: "center",
       }}
     >
-      <Flex marginTop={"10vh"} direction={"column"} width={{base:"92%", xl:"100vh"}}>
-        <Text style={textStyles} paddingTop={{base:"70px", md:"50px"}}>Cart</Text>
+      <Flex
+        marginTop={"10vh"}
+        direction={"column"}
+        width={{ base: "92%", xl: "100vh" }}
+      >
+        <Text style={textStyles} paddingTop={{ base: "70px", md: "50px" }}>
+          Cart
+        </Text>
 
         <Stack
           spacing={{ base: 2, lg: 5 }}
@@ -69,7 +74,11 @@ function CartPage({}: RoutedButtonProps) {
                 alignItems: "center",
               }}
             >
-              <Text style={{ ...textStyles, fontSize: "20px" }}>
+              <Text
+                style={{ ...textStyles }}
+                fontSize={{ base: "15px", lg: "20px" }}
+                paddingTop={{ base: "2vh", lg: "2vh" }}
+              >
                 No items in the cart.{" "}
                 <Link to="/order" style={{ color: "#A17C5F" }}>
                   ORDER HERE
@@ -102,11 +111,16 @@ function CartPage({}: RoutedButtonProps) {
         </Stack>
 
         <Box display="flex" justifyContent={"flex-end"} marginRight={"3vh"}>
-          <Text style={textStyles} fontSize={{ base: "20px", lg: "30px" }}>
+          <Text
+            style={textStyles}
+            fontSize={{ base: "20px", lg: "30px" }}
+            paddingTop={{ base: "3vh", lg: "2vh" }}
+          >
             Total = $
           </Text>
           <Text
             style={{ ...textStyles }}
+            paddingTop={{ base: "3vh", lg: "2vh" }}
             fontSize={{ base: "20px", lg: "30px" }}
           >
             {totalPrice}

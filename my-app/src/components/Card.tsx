@@ -14,12 +14,6 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ id, imgUrl, price, name }: CardProps) => {
   //onAddClick  - add to button
 
-  const imageStyles = {
-    width: "180px",
-    height: "180px",
-    border: "6px solid #A17C5F",
-    borderRadius: "5px",
-  };
   const [isHovered, setIsHovered] = React.useState(false);
   const buttonStyles = {
     backgroundColor: isHovered ? "#654534" : "#A17C5F",

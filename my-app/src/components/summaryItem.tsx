@@ -12,9 +12,8 @@ type SummaryItemProps = {
 const textStyles2 = {
   fontFamily: "Arial",
   color: "#A17C5F",
-  fontSize: "20px",
-  paddingBottom: "50px",
-  paddingTop: "30px",
+  paddingBottom: "20px",
+  paddingTop: "10px",
 };
 
 // const textStyleItem = {};
@@ -28,7 +27,6 @@ export function SummaryItem({ id, quantity }: SummaryItemProps) {
         alignItems={"center"}
         width={"50vh"}
         justifyContent={"flex-start"}
-        marginLeft={"1vh"}
       >
         <Stack
           spacing={2}
@@ -36,19 +34,25 @@ export function SummaryItem({ id, quantity }: SummaryItemProps) {
           flexDirection={"row"}
           alignItems={"center"}
         >
-          <Flex width={"35vh"} flexDirection={"row"} alignItems={"center"}>
+          <Flex width={{base:"75%",md:"35vh"}} flexDirection={"row"} alignItems={"center"}>
             <Box marginRight={"2vh"}>
-              <Box style={textStyles2}>{item.name}</Box>
+              <Box style={textStyles2} fontSize={{ base: "15px", md: "20px" }}>
+                {item.name}
+              </Box>
             </Box>
           </Flex>
-          <Box style={textStyles2} width={"5vh"}>
+          <Box
+            style={textStyles2}
+            fontSize={{ base: "15px", md: "20px" }}
+            width={{ base: "5vh", md: "5vh" }}
+          >
             {quantity > 1 && (
               <Box
                 style={{
                   fontFamily: "Arial",
                   color: "#A17C5F",
-                  fontSize: "18px",
                 }}
+                fontSize={{ base: "14px", md: "18px" }}
               >
                 {" "}
                 x {quantity}
@@ -57,7 +61,7 @@ export function SummaryItem({ id, quantity }: SummaryItemProps) {
           </Box>
           <Box>
             {" "}
-            <Box style={textStyles2}>
+            <Box style={textStyles2} fontSize={{ base: "15px", md: "20px" }}>
               ${(Number(item.price.toFixed(2)) * Number(quantity)).toFixed(2)}
             </Box>
           </Box>
