@@ -11,12 +11,12 @@ import {
   InputGroup,
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useShoppingCart } from "../components/cartFunction";
 import storeItems from "../itemdata.json";
 import SummaryItem from "../components/summaryItem";
-import { kMaxLength } from "buffer";
+import cardValidator from "card-validator";
 
 interface OrderButtonProps {
   to: string;
@@ -66,6 +66,7 @@ function PaymentPage({}: OrderButtonProps) {
 
   const [cardNumber, setCardNumber] = React.useState("");
   const [isCheckmarkVisible, setIsCheckmarkVisible] = React.useState(false);
+  const [isCardValid, setIsCardValid] = React.useState(false);
 
   //Validate card number
   const handleCardNumberChange = (
@@ -95,6 +96,10 @@ function PaymentPage({}: OrderButtonProps) {
     }
 
     setCardNumber(formattedCardNumber);
+
+    // Use the CardValidator package to check if the card number is valid
+    const cardValidation = cardValidator.number(newCardNumber);
+    setIsCardValid(cardValidation.isValid);
   };
 
   return (
@@ -197,10 +202,30 @@ function PaymentPage({}: OrderButtonProps) {
               ></Input>
               <InputRightElement>
                 {isCheckmarkVisible && (
-                  <FontAwesomeIcon icon={faCheck} color="green" />
+                  <FontAwesomeIcon
+                    icon={isCardValid ? faCheck : faXmark}
+                    color={isCardValid ? "green" : "red"}
+                  />
                 )}
               </InputRightElement>
             </InputGroup>
+            <Text />
+            {isCheckmarkVisible && (
+              <Text
+                style={
+                  isCardValid
+                    ? { display: "none" }
+                    : {
+                        marginTop: "-13px",
+                        fontFamily: "sans-serif",
+                        color: "red",
+                        fontSize: "12px",
+                      }
+                }
+              >
+                Invalid Card Number
+              </Text>
+            )}
           </Stack>
 
           <Box
