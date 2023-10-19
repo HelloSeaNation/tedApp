@@ -7,11 +7,16 @@ import {
   Flex,
   Text,
   UnorderedList,
+  InputRightElement,
+  InputGroup,
 } from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useShoppingCart } from "../components/cartFunction";
 import storeItems from "../itemdata.json";
 import SummaryItem from "../components/summaryItem";
+import { kMaxLength } from "buffer";
 
 interface OrderButtonProps {
   to: string;
@@ -57,6 +62,39 @@ function PaymentPage({}: OrderButtonProps) {
   const { clearCart } = useShoppingCart();
   const handleThankYouClick = () => {
     window.scrollTo(0, 0);
+  };
+
+  const [cardNumber, setCardNumber] = React.useState("");
+  const [isCheckmarkVisible, setIsCheckmarkVisible] = React.useState(false);
+
+  //Validate card number
+  const handleCardNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    let newCardNumber = event.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+    let formattedCardNumber = "";
+
+    for (let i = 0; i < newCardNumber.length; i++) {
+      if (i > 0 && i % 4 === 0) {
+        // Add a hyphen after every 4th character, but not at the beginning
+        formattedCardNumber += "-";
+      }
+      formattedCardNumber += newCardNumber[i];
+    }
+
+    // Limit the card number to 19 characters
+    formattedCardNumber = formattedCardNumber.slice(0, 19);
+
+    // Set the input value to the formatted card number
+    event.target.value = formattedCardNumber;
+
+    if (formattedCardNumber.length === 19) {
+      setIsCheckmarkVisible(true);
+    } else {
+      setIsCheckmarkVisible(false);
+    }
+
+    setCardNumber(formattedCardNumber);
   };
 
   return (
@@ -142,19 +180,27 @@ function PaymentPage({}: OrderButtonProps) {
               focusBorderColor="#654534"
               placeholder="Name on Card"
             ></Input>
-
             <Text
               style={simpleTextStyles}
               display={{ base: "none", lg: "block" }}
             >
               Card Number
             </Text>
-            <Input
-              borderColor="#A17C5F"
-              focusBorderColor="#654534"
-              placeholder="Card Number"
-              maxLength={19}
-            ></Input>
+            <InputGroup>
+              <Input
+                borderColor="#A17C5F"
+                focusBorderColor="#654534"
+                placeholder="Card Number"
+                maxLength={19}
+                value={cardNumber}
+                onChange={handleCardNumberChange}
+              ></Input>
+              <InputRightElement>
+                {isCheckmarkVisible && (
+                  <FontAwesomeIcon icon={faCheck} color="green" />
+                )}
+              </InputRightElement>
+            </InputGroup>
           </Stack>
 
           <Box
@@ -213,7 +259,7 @@ function PaymentPage({}: OrderButtonProps) {
             placeholder="Order Notes"
             paddingBottom={"10vh"}
             paddingTop={"2vh"}
-            width={{ base: "94%", md:"100%", lg: "50vh" }}
+            width={{ base: "94%", md: "100%", lg: "50vh" }}
             marginTop={"2vh"}
           ></Input>
           <Text style={textStyles} fontSize={{ base: "20px", md: "25px" }}>
