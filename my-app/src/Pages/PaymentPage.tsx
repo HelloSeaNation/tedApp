@@ -259,7 +259,7 @@ function PaymentPage({}: OrderButtonProps) {
               />
             </Flex>
             <Flex
-              width={{ base: "35vh", md: "26vh" }}
+              width={{ base: "36vh", md: "28vh" }}
               alignItems={"center"}
               marginTop={{ base: "2vh", md: "0vh" }}
             >
@@ -270,7 +270,7 @@ function PaymentPage({}: OrderButtonProps) {
                   maxLength={3}
                   focusBorderColor="#654534"
                   marginLeft="10px"
-                  width={{ base: "19vh", md: "15vh" }}
+                  width={{ base: "15vh", md: "13vh" }}
                   value={cvc}
                   onChange={handleCVCChange}
                 ></Input>
@@ -284,7 +284,15 @@ function PaymentPage({}: OrderButtonProps) {
                 </InputRightElement>
               </InputGroup>
               {isCVCValid && cvc.length === 3 && (
-                <Text style={{ color: "red", fontSize: "12px", width:"20vh", marginLeft:"1vh" }}>
+                <Text
+                  style={{
+                    color: "red",
+                    fontFamily: "sans-serif",
+                    fontSize: "12px",
+                    width: "20vh",
+                    marginLeft: "1vh",
+                  }}
+                >
                   Invalid CVC
                 </Text>
               )}
