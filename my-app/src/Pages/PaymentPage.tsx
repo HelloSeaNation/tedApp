@@ -33,7 +33,6 @@ function PaymentPage({}: OrderButtonProps) {
     borderRadius: "50px",
     height: "60px",
     width: "25vh",
-    marginTop: "5vh",
   };
 
   const textStyles = {
@@ -67,6 +66,8 @@ function PaymentPage({}: OrderButtonProps) {
   const [cardNumber, setCardNumber] = React.useState("");
   const [isCheckmarkVisible, setIsCheckmarkVisible] = React.useState(false);
   const [isCardValid, setIsCardValid] = React.useState(false);
+  const [cvc, setCVC] = React.useState("");
+  const [isCVCValid, setIsCVCValid] = React.useState(false);
 
   //Validate card number
   const handleCardNumberChange = (
@@ -100,6 +101,14 @@ function PaymentPage({}: OrderButtonProps) {
     // Use the CardValidator package to check if the card number is valid
     const cardValidation = cardValidator.number(newCardNumber);
     setIsCardValid(cardValidation.isValid);
+  };
+
+  const handleCVCChange = (event: { target: { value: any } }) => {
+    const newCVC = event.target.value;
+    const cvcRegex = /^[0-9]{3}$/; // CVC should be exactly 3 digits
+    const isValid = cvcRegex.test(newCVC);
+    setCVC(newCVC);
+    setIsCVCValid(isValid);
   };
 
   return (
@@ -237,9 +246,9 @@ function PaymentPage({}: OrderButtonProps) {
             <Flex width={{ base: "30vh", lg: "23vh" }} alignItems={"center"}>
               <Text style={simpleTextStyles}>EXP</Text>
               <Input
-                type="month"
+                type="number"
                 maxLength={2}
-                placeholder="MM"
+                placeholder="MM/YY"
                 name="month/year"
                 focusBorderColor="#654534"
                 marginLeft={{ base: "10px", lg: "30px" }}
@@ -250,17 +259,35 @@ function PaymentPage({}: OrderButtonProps) {
               />
             </Flex>
             <Flex
-              width={{ base: "20vh", md: "15vh" }}
+              width={{ base: "35vh", md: "26vh" }}
               alignItems={"center"}
               marginTop={{ base: "2vh", md: "0vh" }}
             >
               <Text style={simpleTextStyles}>CVC(?)</Text>
-              <Input
-                borderColor="#A17C5F"
-                maxLength={3}
-                focusBorderColor="#654534"
-                marginLeft="10px"
-              ></Input>
+              <InputGroup>
+                <Input
+                  borderColor="#A17C5F"
+                  maxLength={3}
+                  focusBorderColor="#654534"
+                  marginLeft="10px"
+                  width={{ base: "19vh", md: "15vh" }}
+                  value={cvc}
+                  onChange={handleCVCChange}
+                ></Input>
+                <InputRightElement>
+                  {isCVCValid && (
+                    <FontAwesomeIcon
+                      icon={isCardValid ? faCheck : faXmark}
+                      color={isCardValid ? "green" : "red"}
+                    />
+                  )}
+                </InputRightElement>
+              </InputGroup>
+              {isCVCValid && cvc.length === 3 && (
+                <Text style={{ color: "red", fontSize: "12px", width:"20vh", marginLeft:"1vh" }}>
+                  Invalid CVC
+                </Text>
+              )}
             </Flex>
           </Box>
         </Box>
@@ -292,7 +319,7 @@ function PaymentPage({}: OrderButtonProps) {
           </Text>
         </Box>
       </Flex>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="center" marginTop="5vh">
         <Link to="/thank-you">
           <Button
             style={buttonStyles}
