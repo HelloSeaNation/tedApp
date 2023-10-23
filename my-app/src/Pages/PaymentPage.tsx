@@ -9,6 +9,11 @@ import {
   UnorderedList,
   InputRightElement,
   InputGroup,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  CloseButton,
+  
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -109,6 +114,38 @@ function PaymentPage({}: OrderButtonProps) {
     const isValid = cvcRegex.test(newCVC);
     setCVC(newCVC);
     setIsCVCValid(isValid);
+  };
+
+  const [expiryDateValid, setExpiryDateValid] = React.useState(true);
+  const [expiryDateErrorMessage, setExpiryDateErrorMessage] = React.useState("");
+
+  const handleExpiryDateChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/; // MM/YY format
+    const isValidExpiryDate = expiryDateRegex.test(event.target.value);
+    if (isValidExpiryDate) {
+      const [month, year] = event.target.value.split("/");
+      const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-indexed month
+      const currentYear = new Date().getFullYear() % 100; // get last two digits of current year
+      if (
+        parseInt(year) > currentYear ||
+        (parseInt(year) === currentYear && parseInt(month) >= currentMonth)
+      ) {
+        setExpiryDateValid(true);
+        setExpiryDateErrorMessage("");
+      } else {
+        setExpiryDateValid(false);
+        setExpiryDateErrorMessage("Invalid expiry date");
+      }
+    } else {
+      setExpiryDateValid(false);
+      if (event.target.value.length >= 5) {
+        setExpiryDateErrorMessage("Invalid expiry date");
+      } else {
+        setExpiryDateErrorMessage("");
+      }
+    }
   };
 
   return (
@@ -243,21 +280,36 @@ function PaymentPage({}: OrderButtonProps) {
             justifyContent={{ base: "flex-start", lg: "flex-startS" }}
             flexDirection={{ base: "column", md: "row" }}
           >
-            <Flex width={{ base: "30vh", lg: "23vh" }} alignItems={"center"}>
+            <Flex width={{ base: "45vh", lg: "27vh" }} alignItems={"center"}>
               <Text style={simpleTextStyles}>EXP</Text>
+
               <Input
-                type="number"
-                maxLength={2}
+                type="text"
                 placeholder="MM/YY"
-                name="month/year"
+                onChange={handleExpiryDateChange}
                 focusBorderColor="#654534"
                 marginLeft={{ base: "10px", lg: "30px" }}
-                width={{ base: "25vh", md: "15vh" }}
+                width={{ base: "15vh", md: "9vh" }}
                 style={{
                   borderColor: "#A17C5F",
                 }}
-              />
+                
+              ></Input>
+          
+              {!expiryDateValid && (
+                <Text
+                  style={{
+                    marginLeft: "10px",
+                    fontFamily: "sans-serif",
+                    color: "red",
+                    fontSize: "12px",
+                  }}
+                >
+                  {expiryDateErrorMessage}
+                </Text>
+              )}
             </Flex>
+            
             <Flex
               width={{ base: "19vh", md: "20vh" }}
               alignItems={"center"}
@@ -320,11 +372,17 @@ function PaymentPage({}: OrderButtonProps) {
             style={buttonStyles}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={() => {
-              clearCart();
-              handleThankYouClick();
-            }}
-          >
+              onClick={(event) => {
+                if (!isCardValid || !expiryDateValid) {
+                  console.log("Invalid card or expiry date");
+                  alert("Invalid card or expiry date. Please check your information.");
+                  event.preventDefault(); // Prevent the link from being followed
+                } else {
+                  clearCart();
+                  handleThankYouClick();
+                }
+              }}
+            >
             {" "}
             ORDER NOW{" "}
           </Button>

@@ -4146,11 +4146,6 @@ case-sensitive-paths-webpack-plugin@^2.4.0:
   resolved "https://registry.npmjs.org/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz"
   integrity sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==
 
-cc-expiry@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/cc-expiry/-/cc-expiry-1.0.0.tgz"
-  integrity sha512-apZ1XZAqeoSjNNtRe9+nh8xPG2pQqK1tbFP+2PYK0suzihgpjyIjjHwd01Tosq+HLQoYIGQyPu/10PaI+ddLsw==
-
 chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
