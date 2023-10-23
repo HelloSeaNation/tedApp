@@ -13,7 +13,6 @@ import {
   AlertIcon,
   AlertTitle,
   CloseButton,
-  
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -117,7 +116,8 @@ function PaymentPage({}: OrderButtonProps) {
   };
 
   const [expiryDateValid, setExpiryDateValid] = React.useState(true);
-  const [expiryDateErrorMessage, setExpiryDateErrorMessage] = React.useState("");
+  const [expiryDateErrorMessage, setExpiryDateErrorMessage] =
+    React.useState("");
 
   const handleExpiryDateChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -293,9 +293,8 @@ function PaymentPage({}: OrderButtonProps) {
                 style={{
                   borderColor: "#A17C5F",
                 }}
-                
               ></Input>
-          
+
               {!expiryDateValid && (
                 <Text
                   style={{
@@ -309,7 +308,7 @@ function PaymentPage({}: OrderButtonProps) {
                 </Text>
               )}
             </Flex>
-            
+
             <Flex
               width={{ base: "19vh", md: "20vh" }}
               alignItems={"center"}
@@ -372,17 +371,19 @@ function PaymentPage({}: OrderButtonProps) {
             style={buttonStyles}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-              onClick={(event) => {
-                if (!isCardValid || !expiryDateValid) {
-                  console.log("Invalid card or expiry date");
-                  alert("Invalid card or expiry date. Please check your information.");
-                  event.preventDefault(); // Prevent the link from being followed
-                } else {
-                  clearCart();
-                  handleThankYouClick();
-                }
-              }}
-            >
+            onClick={(event) => {
+              if (!isCardValid || !expiryDateValid) {
+                console.log("Invalid card or expiry date");
+                alert(
+                  "Invalid card or expiry date. Please check your information."
+                );
+                event.preventDefault(); // Prevent the link from being followed
+              } else {
+                clearCart();
+                handleThankYouClick();
+              }
+            }}
+          >
             {" "}
             ORDER NOW{" "}
           </Button>
