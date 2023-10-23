@@ -259,7 +259,7 @@ function PaymentPage({}: OrderButtonProps) {
               />
             </Flex>
             <Flex
-              width={{ base: "36vh", md: "28vh" }}
+              width={{ base: "19vh", md: "20vh" }}
               alignItems={"center"}
               marginTop={{ base: "2vh", md: "0vh" }}
             >
@@ -277,25 +277,12 @@ function PaymentPage({}: OrderButtonProps) {
                 <InputRightElement>
                   {isCVCValid && (
                     <FontAwesomeIcon
-                      icon={isCardValid ? faCheck : faXmark}
-                      color={isCardValid ? "green" : "red"}
+                      icon={isCVCValid ? faCheck : faXmark}
+                      color={isCVCValid ? "green" : "red"}
                     />
                   )}
                 </InputRightElement>
               </InputGroup>
-              {isCVCValid && cvc.length === 3 && (
-                <Text
-                  style={{
-                    color: "red",
-                    fontFamily: "sans-serif",
-                    fontSize: "12px",
-                    width: "20vh",
-                    marginLeft: "1vh",
-                  }}
-                >
-                  Invalid CVC
-                </Text>
-              )}
             </Flex>
           </Box>
         </Box>
