@@ -5,9 +5,12 @@ import { Link, Box } from "@chakra-ui/react";
 
 function CartLink() {
   const { openCart, cartQuantity } = useShoppingCart();
+  const handleCartClick = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
-    <Link href="#/cart">
+    <Link href="#/cart" onClick={handleCartClick}>
       <FontAwesomeIcon
         icon={faShoppingCart}
         onClick={openCart}
@@ -20,21 +23,24 @@ function CartLink() {
           position: "relative",
         }}
       />
-      <Box className="cart-count" style={{
-        display: cartQuantity === 0 ? "none" : "block",
-        backgroundColor: "red",
-        color: "white",
-        borderRadius: "50%",
-        width: "20px",
-        height: "20px",
-        textAlign: "center",
-        fontSize: "12px",
-        fontWeight: "bold",
-        lineHeight: "20px",
-        marginTop: "-20px",
-        marginLeft: "40px",
-        position: "relative",
-      }}>
+      <Box
+        className="cart-count"
+        style={{
+          display: cartQuantity === 0 ? "none" : "block",
+          backgroundColor: "red",
+          color: "white",
+          borderRadius: "50%",
+          width: "20px",
+          height: "20px",
+          textAlign: "center",
+          fontSize: "12px",
+          fontWeight: "bold",
+          lineHeight: "20px",
+          marginTop: "-20px",
+          marginLeft: "40px",
+          position: "relative",
+        }}
+      >
         {cartQuantity}
       </Box>
     </Link>

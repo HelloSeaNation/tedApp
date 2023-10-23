@@ -7,11 +7,20 @@ import {
   Flex,
   Text,
   UnorderedList,
+  InputRightElement,
+  InputGroup,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  CloseButton,
 } from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useShoppingCart } from "../components/cartFunction";
 import storeItems from "../itemdata.json";
 import SummaryItem from "../components/summaryItem";
+import cardValidator from "card-validator";
 
 interface OrderButtonProps {
   to: string;
@@ -28,7 +37,6 @@ function PaymentPage({}: OrderButtonProps) {
     borderRadius: "50px",
     height: "60px",
     width: "25vh",
-    marginTop: "5vh",
   };
 
   const textStyles = {
@@ -55,7 +63,90 @@ function PaymentPage({}: OrderButtonProps) {
     .toFixed(2);
 
   const { clearCart } = useShoppingCart();
-  
+  const handleThankYouClick = () => {
+    window.scrollTo(0, 0);
+  };
+
+  const [cardNumber, setCardNumber] = React.useState("");
+  const [isCheckmarkVisible, setIsCheckmarkVisible] = React.useState(false);
+  const [isCardValid, setIsCardValid] = React.useState(false);
+  const [cvc, setCVC] = React.useState("");
+  const [isCVCValid, setIsCVCValid] = React.useState(false);
+
+  //Validate card number
+  const handleCardNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    let newCardNumber = event.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+    let formattedCardNumber = "";
+
+    for (let i = 0; i < newCardNumber.length; i++) {
+      if (i > 0 && i % 4 === 0) {
+        // Add a hyphen after every 4th character, but not at the beginning
+        formattedCardNumber += "-";
+      }
+      formattedCardNumber += newCardNumber[i];
+    }
+
+    // Limit the card number to 19 characters
+    formattedCardNumber = formattedCardNumber.slice(0, 19);
+
+    // Set the input value to the formatted card number
+    event.target.value = formattedCardNumber;
+
+    if (formattedCardNumber.length === 19) {
+      setIsCheckmarkVisible(true);
+    } else {
+      setIsCheckmarkVisible(false);
+    }
+
+    setCardNumber(formattedCardNumber);
+
+    // Use the CardValidator package to check if the card number is valid
+    const cardValidation = cardValidator.number(newCardNumber);
+    setIsCardValid(cardValidation.isValid);
+  };
+
+  const handleCVCChange = (event: { target: { value: any } }) => {
+    const newCVC = event.target.value;
+    const cvcRegex = /^[0-9]{3}$/; // CVC should be exactly 3 digits
+    const isValid = cvcRegex.test(newCVC);
+    setCVC(newCVC);
+    setIsCVCValid(isValid);
+  };
+
+  const [expiryDateValid, setExpiryDateValid] = React.useState(true);
+  const [expiryDateErrorMessage, setExpiryDateErrorMessage] =
+    React.useState("");
+
+  const handleExpiryDateChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/; // MM/YY format
+    const isValidExpiryDate = expiryDateRegex.test(event.target.value);
+    if (isValidExpiryDate) {
+      const [month, year] = event.target.value.split("/");
+      const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-indexed month
+      const currentYear = new Date().getFullYear() % 100; // get last two digits of current year
+      if (
+        parseInt(year) > currentYear ||
+        (parseInt(year) === currentYear && parseInt(month) >= currentMonth)
+      ) {
+        setExpiryDateValid(true);
+        setExpiryDateErrorMessage("");
+      } else {
+        setExpiryDateValid(false);
+        setExpiryDateErrorMessage("Invalid expiry date");
+      }
+    } else {
+      setExpiryDateValid(false);
+      if (event.target.value.length >= 5) {
+        setExpiryDateErrorMessage("Invalid expiry date");
+      } else {
+        setExpiryDateErrorMessage("");
+      }
+    }
+  };
 
   return (
     <Box>
@@ -139,21 +230,48 @@ function PaymentPage({}: OrderButtonProps) {
               borderColor="#A17C5F"
               focusBorderColor="#654534"
               placeholder="Name on Card"
-              
             ></Input>
-
             <Text
               style={simpleTextStyles}
               display={{ base: "none", lg: "block" }}
             >
               Card Number
             </Text>
-            <Input
-              borderColor="#A17C5F"
-              focusBorderColor="#654534"
-              placeholder="Card Number"
-              maxLength={19}
-            ></Input>
+            <InputGroup>
+              <Input
+                borderColor="#A17C5F"
+                focusBorderColor="#654534"
+                placeholder="Card Number"
+                maxLength={19}
+                value={cardNumber}
+                onChange={handleCardNumberChange}
+              ></Input>
+              <InputRightElement>
+                {isCheckmarkVisible && (
+                  <FontAwesomeIcon
+                    icon={isCardValid ? faCheck : faXmark}
+                    color={isCardValid ? "green" : "red"}
+                  />
+                )}
+              </InputRightElement>
+            </InputGroup>
+            <Text />
+            {isCheckmarkVisible && (
+              <Text
+                style={
+                  isCardValid
+                    ? { display: "none" }
+                    : {
+                        marginTop: "-13px",
+                        fontFamily: "sans-serif",
+                        color: "red",
+                        fontSize: "12px",
+                      }
+                }
+              >
+                Invalid Card Number
+              </Text>
+            )}
           </Stack>
 
           <Box
@@ -162,33 +280,60 @@ function PaymentPage({}: OrderButtonProps) {
             justifyContent={{ base: "flex-start", lg: "flex-startS" }}
             flexDirection={{ base: "column", md: "row" }}
           >
-            <Flex width={{ base: "30vh", lg: "23vh" }} alignItems={"center"}>
+            <Flex width={{ base: "45vh", lg: "27vh" }} alignItems={"center"}>
               <Text style={simpleTextStyles}>EXP</Text>
+
               <Input
-                type="month"
-                maxLength={2}
-                placeholder="MM"
-                name="month/year"
+                type="text"
+                placeholder="MM/YY"
+                onChange={handleExpiryDateChange}
                 focusBorderColor="#654534"
                 marginLeft={{ base: "10px", lg: "30px" }}
-                width={{ base: "25vh", md: "15vh" }}
+                width={{ base: "15vh", md: "9vh" }}
                 style={{
                   borderColor: "#A17C5F",
                 }}
-              />
+              ></Input>
+
+              {!expiryDateValid && (
+                <Text
+                  style={{
+                    marginLeft: "10px",
+                    fontFamily: "sans-serif",
+                    color: "red",
+                    fontSize: "12px",
+                  }}
+                >
+                  {expiryDateErrorMessage}
+                </Text>
+              )}
             </Flex>
+
             <Flex
-              width={{ base: "20vh", md: "15vh" }}
+              width={{ base: "19vh", md: "20vh" }}
               alignItems={"center"}
               marginTop={{ base: "2vh", md: "0vh" }}
             >
               <Text style={simpleTextStyles}>CVC(?)</Text>
-              <Input
-                borderColor="#A17C5F"
-                maxLength={3}
-                focusBorderColor="#654534"
-                marginLeft="10px"
-              ></Input>
+              <InputGroup>
+                <Input
+                  borderColor="#A17C5F"
+                  maxLength={3}
+                  focusBorderColor="#654534"
+                  marginLeft="10px"
+                  width={{ base: "15vh", md: "13vh" }}
+                  value={cvc}
+                  onChange={handleCVCChange}
+                ></Input>
+                <InputRightElement>
+                  {isCVCValid && (
+                    <FontAwesomeIcon
+                      icon={isCVCValid ? faCheck : faXmark}
+                      color={isCVCValid ? "green" : "red"}
+                    />
+                  )}
+                </InputRightElement>
+              </InputGroup>
             </Flex>
           </Box>
         </Box>
@@ -212,7 +357,7 @@ function PaymentPage({}: OrderButtonProps) {
             placeholder="Order Notes"
             paddingBottom={"10vh"}
             paddingTop={"2vh"}
-            width={"50vh"}
+            width={{ base: "94%", md: "100%", lg: "50vh" }}
             marginTop={"2vh"}
           ></Input>
           <Text style={textStyles} fontSize={{ base: "20px", md: "25px" }}>
@@ -220,14 +365,23 @@ function PaymentPage({}: OrderButtonProps) {
           </Text>
         </Box>
       </Flex>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="center" marginTop="5vh">
         <Link to="/thank-you">
           <Button
             style={buttonStyles}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={() => {
-              clearCart();
+            onClick={(event) => {
+              if (!isCardValid || !expiryDateValid) {
+                console.log("Invalid card or expiry date");
+                alert(
+                  "Invalid card or expiry date. Please check your information."
+                );
+                event.preventDefault(); // Prevent the link from being followed
+              } else {
+                clearCart();
+                handleThankYouClick();
+              }
             }}
           >
             {" "}

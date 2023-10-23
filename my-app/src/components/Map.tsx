@@ -8,7 +8,7 @@ interface MapProps {
 
 const Map: React.FC<MapProps> = ({ width, height }) => {
   return (
-    <Box style={{ width }}>
+    <Box style={{ width }} maxWidth={"100vh"}>
       <Box
         as="iframe"
         width="100%"

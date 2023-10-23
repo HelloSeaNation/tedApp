@@ -19,13 +19,11 @@ function DrawerPaw() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const TextStyle: {
     fontFamily: string;
-    fontSize: string;
     color: string;
     marginTop: string;
     paddingLeft: string;
   } = {
     fontFamily: "Coiny",
-    fontSize: "60px",
     color: "#A17C5F",
     marginTop: "20px",
     paddingLeft: "20px",
@@ -45,13 +43,18 @@ function DrawerPaw() {
         onClick={onOpen}
       />
 
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose} size={"xl"}>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        size={{ base: "sm", lg: "xl" }}
+      >
         <DrawerOverlay />
         <DrawerContent backgroundColor={"#f2f1e7"}>
-          <Box marginRight={"15vh"}>
+          <Box>
             <DrawerHeader
-              marginTop={"5vh"}
-              paddingRight={"44vh"}
+              marginTop={{ base: "3vh", md: "4vh", lg: "4.5vh" }}
+              paddingRight={{ base: "", lg: "51vh" }}
               display={"flex"}
               justifyContent={"right"}
             >
@@ -63,9 +66,8 @@ function DrawerPaw() {
                 onClick={onClose}
               />
               <Box onClick={onClose}>
-                   <CartLink />
+                <CartLink />
               </Box>
-           
             </DrawerHeader>
 
             <DrawerBody>
@@ -73,6 +75,7 @@ function DrawerPaw() {
                 <Text
                   _hover={{ color: "#654534", cursor: "pointer" }}
                   {...TextStyle}
+                  fontSize={{ base: "50px", md: "60px" }}
                 >
                   HOME
                 </Text>
@@ -84,7 +87,7 @@ function DrawerPaw() {
                   setTimeout(() => {
                     const menuElement = document.getElementById("menu");
                     if (menuElement) {
-                      const offset = 80;
+                      const offset = -80;
                       const top =
                         menuElement.getBoundingClientRect().top +
                         window.scrollY -
@@ -100,6 +103,7 @@ function DrawerPaw() {
                 <Text
                   _hover={{ color: "#654534", cursor: "pointer" }}
                   {...TextStyle}
+                  fontSize={{ base: "50px", md: "60px" }}
                 >
                   MENU
                 </Text>
@@ -108,12 +112,17 @@ function DrawerPaw() {
                 href="#/order"
                 onClick={() => {
                   handleOrderClick();
-                  onClose(); 
+                  onClose();
                 }}
               >
                 <Text
-                  _hover={{ color: "#654534", cursor: "pointer", textDecoration: "none" }}
+                  _hover={{
+                    color: "#654534",
+                    cursor: "pointer",
+                    textDecoration: "none",
+                  }}
                   {...TextStyle}
+                  fontSize={{ base: "50px", md: "60px" }}
                 >
                   ORDER
                 </Text>
@@ -125,7 +134,7 @@ function DrawerPaw() {
                   setTimeout(() => {
                     const aboutElement = document.getElementById("about");
                     if (aboutElement) {
-                      const offset = 80;
+                      const offset = 20;
                       const top =
                         aboutElement.getBoundingClientRect().top +
                         window.scrollY -
@@ -141,6 +150,7 @@ function DrawerPaw() {
                 <Text
                   _hover={{ color: "#654534", cursor: "pointer" }}
                   {...TextStyle}
+                  fontSize={{ base: "50px", md: "60px" }}
                 >
                   ABOUT
                 </Text>
@@ -152,7 +162,7 @@ function DrawerPaw() {
                   setTimeout(() => {
                     const contactElement = document.getElementById("contact");
                     if (contactElement) {
-                      const offset = 80;
+                      const offset = 0;
                       const top =
                         contactElement.getBoundingClientRect().top +
                         window.scrollY -
@@ -168,6 +178,7 @@ function DrawerPaw() {
                 <Text
                   _hover={{ color: "#654534", cursor: "pointer" }}
                   {...TextStyle}
+                  fontSize={{ base: "50px", md: "60px" }}
                 >
                   CONTACT
                 </Text>

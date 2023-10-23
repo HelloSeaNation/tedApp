@@ -25,7 +25,7 @@ export function SummaryItem({ id, quantity }: SummaryItemProps) {
     <Box>
       <Flex
         alignItems={"center"}
-        width={"50vh"}
+        width={{ base: "100%", md: "50vh" }}
         justifyContent={"flex-start"}
       >
         <Stack
@@ -34,7 +34,11 @@ export function SummaryItem({ id, quantity }: SummaryItemProps) {
           flexDirection={"row"}
           alignItems={"center"}
         >
-          <Flex width={{base:"75%",md:"35vh"}} flexDirection={"row"} alignItems={"center"}>
+          <Flex
+            width={{ base: "75%", md: "35vh" }}
+            flexDirection={"row"}
+            alignItems={"center"}
+          >
             <Box marginRight={"2vh"}>
               <Box style={textStyles2} fontSize={{ base: "15px", md: "20px" }}>
                 {item.name}
