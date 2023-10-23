@@ -9,10 +9,6 @@ import {
   UnorderedList,
   InputRightElement,
   InputGroup,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  CloseButton,
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -320,8 +316,8 @@ function PaymentPage({}: OrderButtonProps) {
                   borderColor="#A17C5F"
                   maxLength={3}
                   focusBorderColor="#654534"
-                  marginLeft="10px"
-                  width={{ base: "15vh", md: "13vh" }}
+                  marginLeft={{base:"10px" , lg:"30px"}}
+                  width={{ base: "15vh", md: "13vh", lg:"13vh"}}
                   value={cvc}
                   onChange={handleCVCChange}
                 ></Input>
