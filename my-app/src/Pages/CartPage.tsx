@@ -56,7 +56,7 @@ function CartPage({}: RoutedButtonProps) {
       }}
     >
       <Flex
-        marginTop={"10vh"}
+        marginTop={"11vh"}
         direction={"column"}
         width={{ base: "92%", xl: "100vh" }}
       >

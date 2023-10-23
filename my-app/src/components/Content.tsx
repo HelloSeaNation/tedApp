@@ -39,22 +39,22 @@ function Content() {
             id="about"
             justifyContent={"space-between"}
             align={"center"}
-            paddingTop={{ md: "0", lg: "10vh" }}
+            paddingTop={{ md: "0", lg: "25vh" }}
           >
             <Flex width={{ md: "80%", lg: "70%" }} flexDirection={"column"}>
-              <Stack spacing={{ base: "7", md: "10" }}>
+              <Stack spacing={{ base: "7", md: "10", lg:"5" }}>
                 <Text
                   fontFamily={"Coiny"}
-                  fontSize={{ md: "40px", lg: "50px" }}
+                  fontSize={{ md: "40px", lg: "40px" }}
                   color={"#654534"}
-                  marginBottom={"-30px"}
+                  marginBottom={{ base: "-30px", lg: "-20px" }}
                 >
                   Meet
                 </Text>
 
                 <Text
                   fontFamily={"Coiny"}
-                  fontSize={{ md: "40px", lg: "50px" }}
+                  fontSize={{ md: "40px", lg: "40px" }}
                   color={"#654534"}
                 >
                   Theodore Hall
@@ -62,7 +62,7 @@ function Content() {
 
                 <Text
                   fontFamily={"Marmelad"}
-                  fontSize={{ base: "15px", md: "20px", lg: "25px" }}
+                  fontSize={{ base: "15px", md: "20px", lg: "23px" }}
                   color={"#654534"}
                 >
                   In the heart of bustling Auckland, New Zealand, where the
@@ -97,7 +97,7 @@ function Content() {
             justifyContent={{ base: "center", md: "space-evenly" }}
             align={"center"}
             direction={{ base: "column-reverse", md: "row" }}
-            paddingTop={{ base: "20vh", md: "0" }}
+            paddingTop={{ base: "20vh", md: "0", lg:"25vh" }}
           >
             <Flex
               flexDirection={"column"}
