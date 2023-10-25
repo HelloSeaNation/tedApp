@@ -73,7 +73,7 @@ export function CartItem({ id, quantity }: CartItemProps) {
         </Stack>
         <Flex
           alignItems="center"
-          width={{ base: "50%", lg: "10vh" }}
+          width={{ base: "50%", lg: "15vh" }}
           justifyContent={"flex-end"}
         >
           <Box width={{ base: "65%", lg: "20vh" }}>

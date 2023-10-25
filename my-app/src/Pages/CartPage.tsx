@@ -60,7 +60,7 @@ function CartPage({}: RoutedButtonProps) {
         direction={"column"}
         width={{ base: "92%", xl: "100vh" }}
       >
-        <Text style={textStyles} paddingTop={{ base: "70px", md: "50px" }}>
+        <Text style={textStyles} paddingTop={{ base: "70px", md: "50px", lg:"60px" }}>
           Cart
         </Text>
 
