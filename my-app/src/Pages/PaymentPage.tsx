@@ -285,7 +285,7 @@ function PaymentPage({}: OrderButtonProps) {
                 onChange={handleExpiryDateChange}
                 focusBorderColor="#654534"
                 marginLeft={{ base: "10px", lg: "30px" }}
-                width={{ base: "15vh", md: "9vh" }}
+                width={{ base: "15vh", md: "10vh" }}
                 style={{
                   borderColor: "#A17C5F",
                 }}
@@ -310,7 +310,7 @@ function PaymentPage({}: OrderButtonProps) {
               alignItems={"center"}
               marginTop={{ base: "2vh", md: "0vh" }}
             >
-              <Text style={simpleTextStyles}>CVC(?)</Text>
+              <Text style={simpleTextStyles}>CVC</Text>
               <InputGroup>
                 <Input
                   borderColor="#A17C5F"
